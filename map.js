@@ -117,12 +117,12 @@ async function loadDistrict(districtInfo) {
                 });
                 
                 marker.on('click', function() {
-                    const species = props.species || props["Nombre científico"] || "Especie desconocida";
-                    const commonName = props.common_name || props.CODIGO_ESP || "";
-                    const diameter = props.diameter ? `${props.diameter} cm` : "N/A";
-                    const height = props.height ? `${props.height} m` : "N/A";
-                    const district = props.NBRE_DTO || "";
-                    const neighborhood = props.NBRE_BARRI || "";
+                    const species = props.sn || props.species || props["Nombre científico"] || "Especie desconocida";
+                    const commonName = props.cn || props.common_name || props.CODIGO_ESP || "";
+                    const diameter = props.d || props.diameter ? `${props.d || props.diameter} cm` : "N/A";
+                    const height = props.h || props.height ? `${props.h || props.height} m` : "N/A";
+                    const district = props.dt || props.NBRE_DTO || "";
+                    const neighborhood = props.nb || props.NBRE_BARRI || "";
                     
                     let popupContent = `<div class="tree-info">`;
                     popupContent += `<strong>🌳 ${species}</strong><br>`;

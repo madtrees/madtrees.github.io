@@ -59,13 +59,21 @@ This script will:
 
 **Alternative: Split by districts**
 
-For very large datasets, split into smaller files by district:
+For very large datasets (>200k trees), split into smaller files by district:
 
 ```bash
 python split-by-district.py
 ```
 
 This creates one file per district in `data/districts/` folder.
+
+**Then compress the district files:**
+
+```bash
+python compress-districts.py
+```
+
+This removes redundant fields and shortens property names, reducing file sizes by ~18%. When deployed, GitHub Pages automatically applies gzip compression (additional ~88% reduction), so users download only **~22 MB** instead of 184 MB.
 
 ### Step 4: Replace the Original File
 
@@ -257,6 +265,26 @@ This creates:
 - `districts_index.json` with metadata
 
 **Note:** If using district splitting, you need to modify `map.js` to load districts dynamically (code already included in the current version).
+
+### compress-districts.py
+
+After splitting, compress district files to reduce download size by removing redundant fields and shortening property names.
+
+**Basic usage:**
+```bash
+python compress-districts.py
+```
+
+This script:
+- Removes internal fields (ASSETNUM, NUM_DTO, NUM_BARRIO)
+- Shortens property names (e.g., "Nombre científico" → "sn")
+- Reduces file size by ~18%
+- Files compress further with gzip when served (GitHub Pages automatically applies ~88% compression)
+
+**Example results:**
+- Uncompressed on disk: 184 MB → User downloads with gzip: **~22 MB**
+
+**When to use:** After running `split-by-district.py`, always run `compress-districts.py` before deploying to optimize download speeds.
 
 ## 🐛 Troubleshooting
 
