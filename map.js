@@ -132,20 +132,35 @@ async function loadDistrict(districtInfo) {
                     const district = props.dt || props.NBRE_DTO || "";
                     const neighborhood = props.nb || props.NBRE_BARRI || "";
                     
+                    // Google Street View URL - opens Street View camera directly
+                    const streetViewUrl = `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${lat},${lng}`;
+                    
+                    // Google Images search URL for the scientific name
+                    const imagesSearchUrl = `https://www.google.com/search?tbm=isch&q=${encodeURIComponent(species)}`;
+                    
                     let popupContent = `<div class="tree-info">`;
-                    popupContent += `<strong>🌳 ${species}</strong><br>`;
+                    popupContent += `<span class="tree-species">🌳 ${species}</span>`;
                     if (commonName && commonName !== species) {
-                        popupContent += `<em>${commonName}</em><br>`;
+                        popupContent += `<span class="tree-common-name">${commonName}</span>`;
                     }
-                    popupContent += `<br>`;
-                    popupContent += `<strong>Diámetro:</strong> ${diameter}<br>`;
-                    popupContent += `<strong>Altura:</strong> ${height}`;
-                    if (district) {
-                        popupContent += `<br><br><strong>Distrito:</strong> ${district}`;
+                    popupContent += `<div class="tree-details">`;
+                    popupContent += `<div class="tree-details-item"><strong>Diámetro:</strong> ${diameter}</div>`;
+                    popupContent += `<div class="tree-details-item"><strong>Altura:</strong> ${height}</div>`;
+                    popupContent += `</div>`;
+                    if (district || neighborhood) {
+                        popupContent += `<div class="tree-location">`;
+                        if (district) {
+                            popupContent += `<div class="tree-location-item"><strong>Distrito:</strong> ${district}</div>`;
+                        }
+                        if (neighborhood) {
+                            popupContent += `<div class="tree-location-item"><strong>Barrio:</strong> ${neighborhood}</div>`;
+                        }
+                        popupContent += `</div>`;
                     }
-                    if (neighborhood) {
-                        popupContent += `<br><strong>Barrio:</strong> ${neighborhood}`;
-                    }
+                    popupContent += `<div class="tree-buttons">`;
+                    popupContent += `<a href="${streetViewUrl}" target="_blank" rel="noopener noreferrer" class="street-view-button">🗺️</br> Street View</a>`;
+                    popupContent += `<a href="${imagesSearchUrl}" target="_blank" rel="noopener noreferrer" class="images-button">🖼️</br> Imágenes</a>`;
+                    popupContent += `</div>`;
                     popupContent += `</div>`;
                     
                     marker.bindPopup(popupContent).openPopup();
