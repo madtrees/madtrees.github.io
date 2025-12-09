@@ -116,7 +116,7 @@ async function loadDistrict(districtInfo) {
                 
                 const marker = L.circleMarker([lat, lng], {
                     renderer: canvasRenderer,
-                    radius: 4,
+                    radius: 8,
                     fillColor: '#4CAF50',
                     color: '#2E7D32',
                     weight: 1,
