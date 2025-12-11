@@ -4,8 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <!-- Google Analytics -->
-   <meta name="google-site-verification" content="RWxPx2Inz13oTJe_HmYGp779j8WRcOm4NNTUJ1IJk48" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V2WV9D30ML"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-V2WV9D30ML');
+  </script>
+  
+  <meta name="google-site-verification" content="RWxPx2Inz13oTJe_HmYGp779j8WRcOm4NNTUJ1IJk48" />
 
   <!-- SEO Meta Tags -->
   <title>Madtrees - Mapa Interactivo de los 790.000 Árboles de Madrid</title>
@@ -49,6 +57,9 @@
   
   <!-- Leaflet Locate Control CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.85.1/dist/L.Control.Locate.min.css" />
+  
+  <!-- Cookie Consent CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.css">
   
   <style>
     * {
@@ -314,8 +325,8 @@
     /* Performance indicator */
     #performance-indicator {
       position: absolute;
-      bottom: 10px;
-      left: 10px;
+      top: 10px;
+      left: 50px;
       background: rgba(255, 255, 255, 0.9);
       padding: 8px 12px;
       border-radius: 4px;
@@ -399,6 +410,47 @@
 
     #info-popup a:hover {
       text-decoration: underline;
+    }
+
+    /* Cookie consent customization */
+    #cc-main {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+    }
+
+    #cc-main .cm__btn {
+      border-radius: 6px !important;
+    }
+
+    #cc-main .cm__btn--primary {
+      background: #4CAF50 !important;
+      border-color: #4CAF50 !important;
+    }
+
+    #cc-main .cm__btn--primary:hover {
+      background: #45a049 !important;
+      border-color: #45a049 !important;
+    }
+
+    /* Cookie settings button */
+    #cookie-settings-btn {
+      position: fixed;
+      bottom: 20px;
+      left: 10px;
+      background: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      cursor: pointer;
+      font-size: 12px;
+      color: #666;
+      z-index: 999;
+      transition: all 0.2s;
+    }
+
+    #cookie-settings-btn:hover {
+      background: #f5f5f5;
+      color: #333;
     }
 
     /* Location button */
@@ -533,6 +585,101 @@
   
   <!-- Leaflet Locate Control JS -->
   <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.85.1/dist/L.Control.Locate.min.js"></script>
+  
+  <!-- Cookie Consent JS -->
+  <script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.umd.js"></script>
+  
+  <!-- Cookie Consent Configuration -->
+  <script>
+    // Cookie Consent Configuration
+    CookieConsent.run({
+      categories: {
+        necessary: {
+          enabled: true,
+          readOnly: true
+        },
+        analytics: {}
+      },
+      
+      language: {
+        default: 'es',
+        translations: {
+          es: {
+            consentModal: {
+              title: '🍪 Utilizamos cookies',
+              description: 'Este sitio utiliza cookies de análisis para mejorar tu experiencia y entender cómo interactúas con el mapa. Puedes aceptar todas las cookies o personalizar tu elección.',
+              acceptAllBtn: 'Aceptar todas',
+              acceptNecessaryBtn: 'Rechazar',
+              showPreferencesBtn: 'Personalizar'
+            },
+            preferencesModal: {
+              title: 'Preferencias de cookies',
+              acceptAllBtn: 'Aceptar todas',
+              acceptNecessaryBtn: 'Rechazar opcionales',
+              savePreferencesBtn: 'Guardar preferencias',
+              closeIconLabel: 'Cerrar',
+              sections: [
+                {
+                  title: 'Uso de cookies',
+                  description: 'Utilizamos cookies para analizar el uso del sitio web y mejorar tu experiencia.'
+                },
+                {
+                  title: 'Cookies necesarias',
+                  description: 'No hay ninguna cookie necesaria para el funcionamiento del sitio web.',
+                  linkedCategory: 'necessary'
+                },
+                {
+                  title: 'Cookies de análisis',
+                  description: 'Estas cookies nos ayudan a entender cómo los visitantes interactúan con el sitio web mediante Google Analytics.',
+                  linkedCategory: 'analytics'
+                },
+                {
+                  title: 'Más información',
+                  description: 'Para cualquier consulta sobre nuestra política de cookies, puedes <a href="https://github.com/madtrees/madtrees">contactarnos en GitHub</a>.'
+                }
+              ]
+            }
+          }
+        }
+      },
+      
+      onConsent: function() {
+        if (CookieConsent.acceptedCategory('analytics')) {
+          loadAnalytics();
+        }
+      },
+      
+      onChange: function() {
+        if (CookieConsent.acceptedCategory('analytics')) {
+          loadAnalytics();
+        }
+      }
+    });
+    
+    // Function to load Google Analytics
+    function loadAnalytics() {
+      if (window.gaLoaded) return;
+      window.gaLoaded = true;
+      
+      // Enable Google Analytics
+      if (typeof gtag === 'function') {
+        gtag('consent', 'update', {
+          'analytics_storage': 'granted'
+        });
+      }
+    }
+    
+    // Button to reopen cookie preferences
+    window.addEventListener('load', function() {
+      const btn = document.createElement('button');
+      btn.id = 'cookie-settings-btn';
+      btn.textContent = '🍪 Cookies';
+      btn.onclick = function() {
+        CookieConsent.showPreferences();
+      };
+      document.body.appendChild(btn);
+    });
+  </script>
   
   <!-- Map Script -->
   <script src="./map.js"></script>

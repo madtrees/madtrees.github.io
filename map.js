@@ -300,6 +300,18 @@ async function loadDistrict(districtInfo) {
                     const district = props.dt || props.NBRE_DTO || "";
                     const neighborhood = props.nb || props.NBRE_BARRI || "";
                     
+                    // Track tree marker click in Google Analytics
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'tree_marker_click', {
+                            'tree_species': species,
+                            'tree_common_name': commonName,
+                            'tree_height': props.h || props.height || null,
+                            'tree_diameter': props.d || props.diameter || null,
+                            'tree_district': district,
+                            'tree_neighborhood': neighborhood
+                        });
+                    }
+                    
                     // Google Street View URL - opens Street View camera directly
                     const streetViewUrl = `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${lat},${lng}`;
                     
