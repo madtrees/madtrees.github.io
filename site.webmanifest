@@ -1,6 +1,9 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "Madtrees - Mapa Interactivo de los Árboles de Madrid",
+  "short_name": "Madtrees",
+  "description": "Explora el mapa interactivo de los árboles de Madrid. Descubre especies, ubicaciones y datos de cada árbol de la ciudad.",
+  "start_url": "/",
+  "scope": "/",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -13,9 +16,26 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
+    },
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
     }
   ],
-  "theme_color": "#ffffff",
+  "theme_color": "#4CAF50",
   "background_color": "#ffffff",
-  "display": "standalone"
+  "display": "standalone",
+  "orientation": "any",
+  "lang": "es",
+  "dir": "ltr",
+  "categories": ["maps", "environment", "Madrid", "árboles", "inventario", "arbolado urbano", "arbolado", "arbolado público", "arbolado público de Madrid"],
+  "screenshots": []
 }
