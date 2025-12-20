@@ -1,0 +1,3510 @@
+{
+  "type": "FeatureCollection",
+  "properties": {
+    "district_code": "22",
+    "district_name": "ESPECIAL",
+    "tree_count": 175
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5969785.044",
+        "Y": "-554284.250",
+        "cn": "Abedul de la Dehesa Comunal",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Betula ssp."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.593208,
+          41.117405
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5971006.213",
+        "Y": "-550843.659",
+        "cn": "Abedul de la Dehesa de Somosierra I",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Betula alba"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.570451,
+          41.123922
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5970986.095",
+        "Y": "-551179.641",
+        "cn": "Abedul de la Dehesa de Somosierra II",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Betula alba"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.572634,
+          41.123924
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5929506.434",
+        "Y": "-581807.596",
+        "cn": "Abedul del Arroyo del Toril I",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Betula alba"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.788131,
+          40.868383
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5947907.422",
+        "Y": "-58259.525",
+        "cn": "Abedul del Arroyo del Toril II",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Betula alba"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.78816,
+          40.868399
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5945039.650",
+        "Y": "-589122.175",
+        "cn": "Abeto de Douglas de La Cebedilla I",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Pseudotsuga menziesii"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.829154,
+          40.971887
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5945037.831",
+        "Y": "-589126.371",
+        "cn": "Abeto de Douglas de La Cebedilla II",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Pseudotsuga menziesii"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.829182,
+          40.971877
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5945022.222",
+        "Y": "-589109.336",
+        "cn": "Abeto de Douglas de La Cebedilla III",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Pseudotsuga menziesii"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.829078,
+          40.971769
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5903945.412",
+        "Y": "-63306.023",
+        "cn": "Abeto del Cáucaso de la Casita del Príncipe I",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Abies nordmanniana"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.13615,
+          40.583992
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5882344.385",
+        "Y": "-632089.307",
+        "cn": "Abeto del Cáucaso de la Casita del Príncipe II",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Abies nordmanniana"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.136296,
+          40.584005
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5946653.794",
+        "Y": "-584945.838",
+        "cn": "Abeto del Cáucaso de Peña Alta",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Abies nordmanniana"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.801372,
+          40.980573
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5945073.505",
+        "Y": "-589077.379",
+        "cn": "Abeto Rojo de La Cebedilla I",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Picea abies"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.828849,
+          40.972087
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5945080.843",
+        "Y": "-589069.227",
+        "cn": "Abeto Rojo de La Cebedilla II",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Picea abies"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.828793,
+          40.972131
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5910563.678",
+        "Y": "-593866.121",
+        "cn": "Acebo de Las Cerradillas",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Ilex aquifolium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.874567,
+          40.750679
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5930369.006",
+        "Y": "-580531.957",
+        "cn": "Acebo del Puerto de Canencia",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Ilex aquifolium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.779479,
+          40.873439
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5913537.448",
+        "Y": "-601258.808",
+        "cn": "Acebo del Río Manzanares",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Ilex aquifolium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.921453,
+          40.773106
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5804803.583",
+        "Y": "-544464.817",
+        "cn": "Ahuehuete de los Chinescos",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Taxodium mucronatum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.593743,
+          40.040709
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5804394.143",
+        "Y": "-544797.900",
+        "cn": "Ahuehuete de Los Jardinillos",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Taxodium mucronatum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.596098,
+          40.038151
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5899359.655",
+        "Y": "-619156.100",
+        "cn": "Alcornoque de la Dehesa de la Jara",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus suber"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.044272,
+          40.688864
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5909895.052",
+        "Y": "-597936.039",
+        "cn": "Alcornoque de las Casiruelas",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus suber"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.901368,
+          40.748066
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5904219.130",
+        "Y": "-607921.404",
+        "cn": "Alcornoque de Prado Guerrero",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus suber"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.968888,
+          40.715515
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5861118.337",
+        "Y": "-602408.742",
+        "cn": "Alcornoque de Romanillos I",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus suber"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.951485,
+          40.432708
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5878551.619",
+        "Y": "-60195.822",
+        "cn": "Alcornoque de Romanillos II",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus suber"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.94385,
+          40.418824
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5929588.022",
+        "Y": "-582322.035",
+        "cn": "Alerce del Vivero de Mojonavalle",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Larix decidua"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.791442,
+          40.869124
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5883167.785",
+        "Y": "-633699.267",
+        "cn": "Almendro del Parque",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Prunus dulcis"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.146442,
+          40.590087
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5858117.693",
+        "Y": "-565363.377",
+        "cn": "Almez de La Arganzuela",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Celtis australis"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.710015,
+          40.397768
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5859501.979",
+        "Y": "-564647.734",
+        "cn": "Almez del Casino de la Reina",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Celtis australis"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.704767,
+          40.406511
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5883166.367",
+        "Y": "-633673.146",
+        "cn": "Árbol del Amor del Parque",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Cercis siliquastrum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.146272,
+          40.590066
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5956968.748",
+        "Y": "-561510.470",
+        "cn": "Arce de Los Horcajuelos",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Acer monspessulanum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.645134,
+          41.037624
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "1283900.260",
+        "Y": "-409692.565",
+        "cn": "Arce Plateado de Los Jardines de Cecilio Rodríguez",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Acer saccharinum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.678499,
+          40.413959999999996
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5957619.499",
+        "Y": "-561547.338",
+        "cn": "Bardaguera Blanca de Braojos",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Salix salviifolia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.645112,
+          41.041838
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5860369.070",
+        "Y": "-562402.643",
+        "cn": "Butia del Real Jardín Botánico",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Butia capitata"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.689707,
+          40.411268
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5804746.935",
+        "Y": "-544500.312",
+        "cn": "Caqui de Virginia de los Chinescos",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Diospyros virginiana"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.593999,
+          40.040351
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5900293.180",
+        "Y": "-615977.861",
+        "cn": "Castaño de Indias de Collado Mediano",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Aesculus hippocastanum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.023133,
+          40.693531
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5882803.907",
+        "Y": "-634370.378",
+        "cn": "Castaño de Indias del Parque Adolfo Suárez I",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Aesculus hippocastanum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.150991,
+          40.588022
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "1285402.508",
+        "Y": "-462329.153",
+        "cn": "Castaño de Indias del Parque Adolfo Suárez II",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Aesculus hippocastanum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.150958,
+          40.58798
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5877140.949",
+        "Y": "-637431.185",
+        "cn": "Castaño de la Fuente del Rey",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Castanea sativa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.173564,
+          40.552548
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5955524.211",
+        "Y": "-532429.965",
+        "cn": "Castaño de la Gutera",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Castanea sativa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.457125,
+          41.016994
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5879029.788",
+        "Y": "-635974.928",
+        "cn": "Castaño de las Machotas I",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Castanea sativa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.163187,
+          40.564185
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5878980.652",
+        "Y": "-635974.575",
+        "cn": "Castaño de las Machotas II",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Castanea sativa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.163207,
+          40.563865
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5899832.680",
+        "Y": "-63932.704",
+        "cn": "Castaño del Cotanillo",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Castanea sativa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.1789700000000005,
+          40.557323
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5855534.407",
+        "Y": "-569658.593",
+        "cn": "Cedro de los Jardines de Vista Alegre",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Cedrus libanotica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.739215,
+          40.382644
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5882236.691",
+        "Y": "-635404.317",
+        "cn": "Cedro del Líbano de la Casita de Arriba",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Cedrus libani"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.158003,
+          40.584798
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5861381.345",
+        "Y": "-561119.657",
+        "cn": "Cedro del Parque del Retiro",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Cedrus libanotica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.680895,
+          40.417358
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "1292177.057",
+        "Y": "-3835.386",
+        "cn": "Cerezo de la Mala Colá",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Prunus avium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.4431999999999996,
+          41.00726
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5969204.737",
+        "Y": "-53064.888",
+        "cn": "Cerezo del Puente de las Cabras",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Prunus avium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.44233,
+          41.005587
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "1289145.518",
+        "Y": "-431210.227",
+        "cn": "Cerezo del Soto de los Frailes",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Prunus padus"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.871295,
+          40.89844
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5847790.692",
+        "Y": "-537213.191",
+        "cn": "Chopo de Don Sergio",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Populus nigra"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.529463,
+          40.319338
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5881537.268",
+        "Y": "-625202.725",
+        "cn": "Chopo de Fuentelasyeguas",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Populus x canadensis"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.091662,
+          40.575675
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5852200.069",
+        "Y": "-600971.551",
+        "cn": "Chopo de La Pellejera II",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Populus x canadensis"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.945896,
+          40.373901
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5935591.797",
+        "Y": "-591928.319",
+        "cn": "Chopo de Oteruelo del Valle",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Populus x canadensis"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.851362,
+          40.911983
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5869940.971",
+        "Y": "-60208.375",
+        "cn": "Chopo de Sacedón",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Populus nigra"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.9483699999999997,
+          40.362761
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5922847.804",
+        "Y": "-542626.334",
+        "cn": "Chopo de Torrelaguna",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Populus x canadensis"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.535916,
+          40.809609
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5854896.977",
+        "Y": "-623425.760",
+        "cn": "Chopo de Villanueva de Perales",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Populus nigra"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.091905,
+          40.401273
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5938148.930",
+        "Y": "-586992.818",
+        "cn": "Chopo del Ayuntamiento",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Populus x canadensis"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.818222,
+          40.926453
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5838012.114",
+        "Y": "-502894.606",
+        "cn": "Chopo del Río",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Populus x canadensis"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.307732,
+          40.242771
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5877827.060",
+        "Y": "-56182.608",
+        "cn": "Ciprés Calvo del Estanque del Palacio de Cristal",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Taxodium distichum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.6812099999999996,
+          40.413943
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5890803.696",
+        "Y": "-557607.387",
+        "cn": "Ciprés de Arizona del Castillo de Viñuelas",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Cupressus arizonica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.646174,
+          40.607531
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5945013.671",
+        "Y": "-589121.877",
+        "cn": "Ciprés de Lawson de la Cebedilla",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Chamaecyparis lawsoniana"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.829163,
+          40.971719
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5946316.080",
+        "Y": "-586443.841",
+        "cn": "Ciprés de Lawson de la Curva del Puente",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Chamaecyparis lawsoniana"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.811235,
+          40.979015
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5804821.871",
+        "Y": "-544594.215",
+        "cn": "Ciprés de los Chinescos",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Cupressus sempervirens"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.594589,
+          40.040879
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5860459.652",
+        "Y": "-562528.301",
+        "cn": "Ciprés del Real Jardín Botánico",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Cupressus sempervirens"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.690494,
+          40.411909
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5924300.041",
+        "Y": "-547245.445",
+        "cn": "El Candelabro de los Jardines de Santa Lucía",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Cedrus deodara"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.565412,
+          40.820804
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5969700.874",
+        "Y": "-540533.384",
+        "cn": "El Roble Viejo",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus petraea"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.504206,
+          41.111511
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5852680.222",
+        "Y": "-484092.266",
+        "cn": "Encina de Ambite",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus ilex"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.179113,
+          40.332007
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5879512.081",
+        "Y": "-56612.703",
+        "cn": "Encina de la Antigua Universidad Central",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus ilex"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.70871,
+          40.424926
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5838012.966",
+        "Y": "-644226.842",
+        "cn": "Encina de la Condesa",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus ilex"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.235976,
+          40.300347
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5852349.087",
+        "Y": "-483380.010",
+        "cn": "Encina de la Huerta",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus ilex"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.174554,
+          40.329601
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "1283527.780",
+        "Y": "-356884.398",
+        "cn": "Encina de la Pica",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus ilex"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.204393,
+          40.34571
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5877477.849",
+        "Y": "-57298.386",
+        "cn": "Encina de la Venta del Batán",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus ilex"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.75446,
+          40.411715
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5946839.548",
+        "Y": "-551560.673",
+        "cn": "Encina de las Cercadillas",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus ilex"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.584614,
+          40.968285
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5883029.562",
+        "Y": "-63216.903",
+        "cn": "Encina de Navalagamella",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus ilex"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.13976,
+          40.448091
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5837192.853",
+        "Y": "-644514.427",
+        "cn": "Encina del Mesto",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus ilex"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.238241,
+          40.295116
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5877594.363",
+        "Y": "-5735.582",
+        "cn": "Encina del Puente de Hierro",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus ilex"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.7581999999999995,
+          40.411322
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5876069.872",
+        "Y": "-5754.009",
+        "cn": "Encina del Puente de la Culebra",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus ilex"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.7709,
+          40.401399
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5860467.900",
+        "Y": "-572090.145",
+        "cn": "Encina del Trillo",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus ilex"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.753141,
+          40.415816
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5943315.378",
+        "Y": "-578070.890",
+        "cn": "Enebro de los Canalizos",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Juniperus oxycedrus"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.758133,
+          40.956158
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5894831.174",
+        "Y": "-559087.659",
+        "cn": "Enebro del Cerro Valviejo",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Juniperus oxycedrus"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.654234,
+          40.634293
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5838927.357",
+        "Y": "-638508.293",
+        "cn": "Enebro del Depósito",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Juniperus oxycedrus"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.198019,
+          40.303719
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5840765.978",
+        "Y": "-640027.712",
+        "cn": "Eucalipto del Puente",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Eucalyptus camaldulensis"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.207153,
+          40.316429
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5944419.989",
+        "Y": "-571253.034",
+        "cn": "Fresno de Gargantilla del Lozoya",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Fraxinus angustifolia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.713417,
+          40.960511
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5853624.996",
+        "Y": "-625962.263",
+        "cn": "Fresno de la Dehesa Comunal",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Fraxinus angustifolia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.109096,
+          40.394097
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5881797.358",
+        "Y": "-633570.705",
+        "cn": "Fresno de La Herrería",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Fraxinus angustifolia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.146222,
+          40.581112
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5959437.647",
+        "Y": "-563792.368",
+        "cn": "Fresno de la Reguera II",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Fraxinus angustifolia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.658934,
+          41.054467
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5934466.235",
+        "Y": "-547395.887",
+        "cn": "Fresno del Frontón",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Fraxinus angustifolia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.562417,
+          40.886667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5858427.285",
+        "Y": "-574442.231",
+        "cn": "Fresno del Zarzón",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Fraxinus angustifolia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.769388,
+          40.403463
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5970336.772",
+        "Y": "-539925.104",
+        "cn": "Haya de El Chaparral I",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Fagus sylvatica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.500022,
+          41.115375
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5970406.096",
+        "Y": "-540108.237",
+        "cn": "Haya de El Chaparral II",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Fagus sylvatica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.501181,
+          41.115892
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5970481.469",
+        "Y": "-540023.149",
+        "cn": "Haya de El Chaparral III",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Fagus sylvatica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.500601,
+          41.116345
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5970516.972",
+        "Y": "-539932.595",
+        "cn": "Haya de El Chaparral IV",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Fagus sylvatica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.500001,
+          41.116539
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "1291914.689",
+        "Y": "-390144.688",
+        "cn": "Haya de El Chaparral V",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Fagus sylvatica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.502447,
+          41.11649
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5970442.717",
+        "Y": "-540209.884",
+        "cn": "Haya del Ancla",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Fagus sylvatica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.501825,
+          41.116167
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5847419.842",
+        "Y": "-486997.834",
+        "cn": "Higuera de la Ermita de Bellaescusa",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Ficus carica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.200004,
+          40.298662
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5849357.304",
+        "Y": "-612790.255",
+        "cn": "La Encina Macho",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus ilex"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.024625,
+          40.360436
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5927819.602",
+        "Y": "-623.178",
+        "cn": "Libocedro del Parque I",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Calocedrus decurrens"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.061,
+          40.737311
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5906612.100",
+        "Y": "-622286.755",
+        "cn": "Libocedro del Parque II",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Calocedrus decurrens"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.061467,
+          40.737329
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5804984.144",
+        "Y": "-544110.654",
+        "cn": "Liquidámbar de la calle Duque de la Victoria",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Liquidambar styraciflua"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.591338,
+          40.041757
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5804189.356",
+        "Y": "-546803.658",
+        "cn": "Liquidámbar de La Isla",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Liquidambar styraciflua"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.609402,
+          40.037584
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5832380.188",
+        "Y": "-672171.449",
+        "cn": "Madroño de la Lancha de la Osa",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Arbutus unedo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.422101,
+          40.276578
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5832451.877",
+        "Y": "-672154.605",
+        "cn": "Madroño del Cerro Majuelito",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Arbutus unedo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.421956,
+          40.277039
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5803961.399",
+        "Y": "-546398.726",
+        "cn": "Madroño del Parterre",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Arbutus unedo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.606821,
+          40.035931
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5918914.108",
+        "Y": "-572558.903",
+        "cn": "Moral de Las Huelgas",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Morus nigra"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.732324,
+          40.795985
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5847880.071",
+        "Y": "-641418.767",
+        "cn": "Moral de Los Robles",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Morus nigra"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.213026,
+          40.363547
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5970981.787",
+        "Y": "-551293.840",
+        "cn": "Mostajo de la Dehesa de Somosierra I",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Sorbus aria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.573375,
+          41.123941
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5934040.809",
+        "Y": "-598234.678",
+        "cn": "Mostajo del Molino del Cubo]",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Sorbus latifolia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.892998,
+          40.904618
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5964959.184",
+        "Y": "-558725.541",
+        "cn": "Nogal de La Acebeda",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Juglans regia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.623889,
+          41.088056
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5942196.277",
+        "Y": "-583813.772",
+        "cn": "Nogal de Lozoya",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Juglans regia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.795884,
+          40.951297
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5857838.549",
+        "Y": "-490336.379",
+        "cn": "Nogal de Olmeda de las Fuentes",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Juglans regia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.218276,
+          40.367827
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5954955.616",
+        "Y": "-530428.270",
+        "cn": "Nogal del Pradillo",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Juglans regia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.444358,
+          41.012568
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5955278.861",
+        "Y": "-531473.993",
+        "cn": "Nogal del Puente",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Juglans regia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.451018,
+          41.015049
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "1281979.469",
+        "Y": "-37802.356",
+        "cn": "Olivo de Las Cruces",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Olea europaea"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.3943600000000003,
+          40.099030000000006
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5849558.570",
+        "Y": "-487438.470",
+        "cn": "Olivo Santo",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Olea europaea"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.202153,
+          40.312781
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "1285427.549",
+        "Y": "-465141.314",
+        "cn": "Olmo de Los Llanillos",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Ulmus laevis"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.176203,
+          40.59248
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5857193.057",
+        "Y": "-494186.166",
+        "cn": "Olmo de Nuevo Baztán",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Ulmus minor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.243747,
+          40.364961
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5896380.781",
+        "Y": "-625843.246",
+        "cn": "Olmo del Ayuntamiento",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Ulmus minor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.089215,
+          40.672474
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5803579.547",
+        "Y": "-547627.373",
+        "cn": "Olmo del Camino de la Estación",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Ulmus minor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.615071,
+          40.033902
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5860428.711",
+        "Y": "-562520.301",
+        "cn": "Olmo del Cáucaso del Real Jardín Botánico",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Zelkova carpinifolia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.690454,
+          40.411704
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5867304.105",
+        "Y": "-571389.669",
+        "cn": "Olmo del Parque Sindical",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Ulmus minor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.745764,
+          40.460102
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5860416.222",
+        "Y": "-562631.556",
+        "cn": "Olmo El Pantalones",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Ulmus minor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.691188,
+          40.411667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5860376.778",
+        "Y": "-562411.967",
+        "cn": "Palmera Canaria del Real Jardín Botánico",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Phoenix canariensis"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.689765,
+          40.411322
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5860475.539",
+        "Y": "-562516.759",
+        "cn": "Parrotia del Real Jardín Botánico",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Parrotia persica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.690412,
+          40.412008
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5964675.598",
+        "Y": "-532811.545",
+        "cn": "Peral de La Hiruela",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Pyrus communis"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.456117,
+          41.076173
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5969005.284",
+        "Y": "-538984.276",
+        "cn": "Pino Albar de El Chaparral",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Pinus sylvestris"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.494443,
+          41.106434
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5910795.956",
+        "Y": "-615833.954",
+        "cn": "Pino Albar de la Cadena",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Pinus sylvestris"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.017576,
+          40.761633
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5919798.804",
+        "Y": "-6361.846",
+        "cn": "Pino Albar de la Pinosilla",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Pinus sylvestris"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.1494,
+          40.685384
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5814457.313",
+        "Y": "-485841.370",
+        "cn": "Pino Carrasco de Buenamesón",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Pinus halepensis"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.203833,
+          40.082594
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5860412.810",
+        "Y": "-561056.046",
+        "cn": "Pino Carrasco de la Rosaleda del Retiro",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Pinus halepensis"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.680866,
+          40.411016
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5857163.877",
+        "Y": "-494338.314",
+        "cn": "Pino carrasco del Jardín del Palacio de Goyeneche",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Pinus halepensis"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.244755,
+          40.364824
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5860289.750",
+        "Y": "-562531.170",
+        "cn": "Pino Carrasco del Real Jardín Botánico",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Pinus halepensis"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.690581,
+          40.410802
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5928327.273",
+        "Y": "-602994.051",
+        "cn": "Pino de Hoyo Claveles",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Pinus sylvestris"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.926385,
+          40.869674
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5945014.909",
+        "Y": "-589109.940",
+        "cn": "Pino de Lord Weymouth de La Cebedilla",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Pinus strobus"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.829085,
+          40.971722
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5882294.242",
+        "Y": "-635480.711",
+        "cn": "Pino de Sabine de la Casita de Arriba I",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Pinus sabiniana"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.158476,
+          40.585207
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5894162.119",
+        "Y": "-636340.902",
+        "cn": "Pino Laricio de La Hilera",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Pinus nigra"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.158704,
+          40.662769
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5870185.392",
+        "Y": "-643504.215",
+        "cn": "Pino Negral de San Antonio",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Pinus pinaster"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.216457,
+          40.510011
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5870956.006",
+        "Y": "-525853.032",
+        "cn": "Pino Piñonero del Olivar",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Pinus pinea"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.446218,
+          40.466153
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5805889.830",
+        "Y": "-541440.262",
+        "cn": "Pino Piñonero del Vivero",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Pinus pinea"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.573383,
+          40.046671
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5882441.086",
+        "Y": "-632017.619",
+        "cn": "Pinsapo de la Casita del Príncipe",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Abies pinsapo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.135784,
+          40.584602
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5804663.221",
+        "Y": "-546830.617",
+        "cn": "Plátano de la Huerta del Infante",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Platanus x hispanica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.609395,
+          40.040704
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5804680.983",
+        "Y": "-544033.662",
+        "cn": "Plátano de la Trinidad",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Platanus x hispanica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.590948,
+          40.039738
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5804881.788",
+        "Y": "-545922.224",
+        "cn": "Plátano de los Pabellones",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Platanus x hispanica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.603321,
+          40.041786
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5879699.914",
+        "Y": "-56879.935",
+        "cn": "Plátano de San Antonio de la Florida",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Platanus x hispanica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.72614,
+          40.426159
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5804671.615",
+        "Y": "-546902.554",
+        "cn": "Plátanos de la Tronca",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Platanus x hispanica +  Pl. Orientalis"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.609866,
+          40.040787
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5850354.986",
+        "Y": "-627153.628",
+        "cn": "Quejigo de la Dehesa Milla",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus faginea"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.118368,
+          40.373279
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5848692.588",
+        "Y": "-626603.748",
+        "cn": "Quejigo de San Norberto",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus faginea"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.115506,
+          40.362178
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5839985.404",
+        "Y": "-475781.753",
+        "cn": "Quejigo del Robledal",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus faginea"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.128894,
+          40.246256
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5965276.093",
+        "Y": "-530404.366",
+        "cn": "Rebollo de la Dehesa",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus pyrenaica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.440293,
+          41.079135
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5946796.957",
+        "Y": "-579557.440",
+        "cn": "Rebollo de la Gallina",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus pyrenaica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.766343,
+          40.979267
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5881599.569",
+        "Y": "-635760.310",
+        "cn": "Rebollo de La Herrería",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus pyrenaica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.160618,
+          40.580813
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5946709.645",
+        "Y": "-580934.332",
+        "cn": "Rebollo de La Maleza",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus pyrenaica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.775315,
+          40.979271
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5935374.816",
+        "Y": "-599425.205",
+        "cn": "Rebollo de la Mata del Pañuelo",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus pyrenaica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.900163,
+          40.913755
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5955281.890",
+        "Y": "-531739.825",
+        "cn": "Rebollo de las Puentecillas",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus pyrenaica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.452741,
+          41.015169
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5930724.010",
+        "Y": "-590896.764",
+        "cn": "Rebollo del Palancar",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus pyrenaica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.846714,
+          40.880053
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5964079.242",
+        "Y": "-533387.365",
+        "cn": "Roble Bastián",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus pyrenaica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.460075,
+          41.072546
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5969232.420",
+        "Y": "-539806.358",
+        "cn": "Roble de El Chaparral",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus petraea"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.499679,
+          41.108213
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5933628.400",
+        "Y": "-602108.272",
+        "cn": "Roble del Arroyo de la Redonda",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus petraea"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.918346,
+          40.903603
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5859793.696",
+        "Y": "-572863.417",
+        "cn": "Roble del Puente de Hierro",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Quercus robur"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.758483,
+          40.411733
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5961585.672",
+        "Y": "-57896.305",
+        "cn": "Sabina Albar de los Canalizos",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Juniperus thurifera"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.7588899999999996,
+          40.956662
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5868551.805",
+        "Y": "-643746.410",
+        "cn": "Sabina del Portacho",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Juniperus thurifera"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.218792,
+          40.499477
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "1285628.021",
+        "Y": "-43061.079",
+        "cn": "Sabina El Enebro",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Juniperus thurifera"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.86628,
+          40.42481000000001
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "1290019.844",
+        "Y": "-393345.060",
+        "cn": "Salguera del Molino del Villar",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Salix alba"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.531307,
+          40.94939
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5931629.117",
+        "Y": "-597117.199",
+        "cn": "Sauce de la Galapaguera I",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Salix fragilis"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.886765,
+          40.888538
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5931633.089",
+        "Y": "-597103.767",
+        "cn": "Sauce de la Galapaguera II",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Salix fragilis"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.886676,
+          40.888558
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5882407.450",
+        "Y": "-632090.754",
+        "cn": "Secuoya Gigante de la Casita del Príncipe I",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Sequoiadendron giganteum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.136277,
+          40.584416
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5882349.233",
+        "Y": "-632246.068",
+        "cn": "Secuoya Gigante de la Casita del Príncipe II",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Sequoiadendron giganteum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.137318,
+          40.584107
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5880817.251",
+        "Y": "-502759.819",
+        "cn": "Taray del Gallo",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Tamarix gallica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.291492,
+          40.521925
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5969304.682",
+        "Y": "-540572.767",
+        "cn": "Tejo de El Chaparral I",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Taxus baccata"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.504614,
+          41.108973
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "1291918.407",
+        "Y": "-390273.714",
+        "cn": "Tejo de El Chaparral II",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Taxus baccata"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.503605,
+          41.116910000000004
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5921206.548",
+        "Y": "-598843.465",
+        "cn": "Tejo de la Roca",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Taxus baccata"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.902443,
+          40.821784
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5930501.715",
+        "Y": "-580275.249",
+        "cn": "Tejo de la Senda",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Taxus baccata"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.777755,
+          40.874192
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "1283912.170",
+        "Y": "-410011.096",
+        "cn": "Tejo del Palacio de Velázquez del Retiro",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Taxus baccata"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.681358,
+          40.41525
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5860409.551",
+        "Y": "-562682.885",
+        "cn": "Tejo del Real Jardín Botánico",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Taxus baccata"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.691527,
+          40.411644
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5930841.469",
+        "Y": "-580440.264",
+        "cn": "Tejo del Sestil del Maillo",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Taxus baccata"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.778687,
+          40.876459
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5953769.675",
+        "Y": "-5751.088",
+        "cn": "Tilo de Canencia",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Tilia platyphyllos"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.7371000000000003,
+          40.905058
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5879092.798",
+        "Y": "-635866.232",
+        "cn": "Tilo de la Mano",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Tilia x europaea"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.162448,
+          40.564546
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "dt": "Comunidad de Madrid",
+        "nb": "PALACIO",
+        "X": "5855518.994",
+        "Y": "-570200.995",
+        "cn": "Washingtonia de la Plaza de la Palmera",
+        "d": 0.0,
+        "h": 0.0,
+        "sn": "Washingtonia filifera"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.742777,
+          40.382763
+        ]
+      }
+    }
+  ]
+}

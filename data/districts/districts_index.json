@@ -1,5 +1,5 @@
 {
-  "total_trees": 793047,
+  "total_trees": 793147,
   "total_districts": 22,
   "districts": [
     {
@@ -148,6 +148,13 @@
       "filename": "district_21_BARAJAS.geojson",
       "tree_count": 34838,
       "size_mb": 12.764150619506836
+    },
+    {
+      "code": "22",
+      "name": "ESPECIAL",
+      "filename": "district_22_ARBOLES_SINGULARES.geojson",
+      "tree_count": 175,
+      "size_mb": 0.020812000000000000
     },
     {
       "code": "99",

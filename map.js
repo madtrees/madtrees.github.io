@@ -216,11 +216,13 @@ function calculateMarkerRadius(props) {
  * - Yields to browser periodically to keep UI responsive
  * 
  * Marker properties:
- * - Radius: Calculated based on tree diameter and height (see calculateMarkerRadius)
- * - Color: Based on tree height:
- *   * < 16m: Regular green (#4CAF50)
- *   * 16-18.99m: Stronger green (#2E7D32)
- *   * ≥ 19m: Dark green-purple (#2D4A3A)
+ * - District 22 (Árboles Singulares): Fixed 8px radius, purple color (#9C27B0)
+ * - Other districts:
+ *   * Radius: Calculated based on tree diameter and height (see calculateMarkerRadius)
+ *   * Color: Based on tree height:
+ *     - < 16m: Regular green (#4CAF50)
+ *     - 16-18.99m: Stronger green (#2E7D32)
+ *     - ≥ 19m: Dark green-purple (#2D4A3A)
  * 
  * Popup includes: species, common name, diameter, height, district, neighborhood,
  * and links to Google Street View and image search.
@@ -255,31 +257,40 @@ async function loadDistrict(districtInfo) {
                 const [lng, lat] = feature.geometry.coordinates;
                 const props = feature.properties || {};
                 
-                // Calculate radius based on tree size
-                const markerRadius = calculateMarkerRadius(props);
+                // Special styling for district 22 (Árboles Singulares)
+                let markerRadius, fillColor, borderColor;
                 
-                // Check tree height for color classification
-                const height = props.h || props.height;
-                const isTopTallTree = height && height >= 19; // 19m or more - dark green almost purple
-                const isTallTree = height && height >= 16; // 16m or more - stronger green
-                
-                // Color scheme based on height:
-                // < 16m: regular green
-                // 16m-18.99m: stronger green
-                // ≥ 19m: dark green almost purple
-                let fillColor, borderColor;
-                if (isTopTallTree) {
-                    // 19m or taller: dark green almost purple
-                    fillColor = '#2D4A3A';
-                    borderColor = '#1B3A2A';
-                } else if (isTallTree) {
-                    // 16m or taller (but < 19m): stronger green
-                    fillColor = '#2E7D32';
-                    borderColor = '#1B5E20';
+                if (districtCode === '22') {
+                    // District 22: purple markers with fixed 8px radius
+                    markerRadius = 8;
+                    fillColor = '#9C27B0';  // Purple
+                    borderColor = '#6A1B9A'; // Darker purple
                 } else {
-                    // Regular trees: medium green
-                    fillColor = '#4CAF50';
-                    borderColor = '#2E7D32';
+                    // Other districts: calculate radius based on tree size
+                    markerRadius = calculateMarkerRadius(props);
+                    
+                    // Check tree height for color classification
+                    const height = props.h || props.height;
+                    const isTopTallTree = height && height >= 19; // 19m or more - dark green almost purple
+                    const isTallTree = height && height >= 16; // 16m or more - stronger green
+                    
+                    // Color scheme based on height:
+                    // < 16m: regular green
+                    // 16m-18.99m: stronger green
+                    // ≥ 19m: dark green almost purple
+                    if (isTopTallTree) {
+                        // 19m or taller: dark green almost purple
+                        fillColor = '#2D4A3A';
+                        borderColor = '#1B3A2A';
+                    } else if (isTallTree) {
+                        // 16m or taller (but < 19m): stronger green
+                        fillColor = '#2E7D32';
+                        borderColor = '#1B5E20';
+                    } else {
+                        // Regular trees: medium green
+                        fillColor = '#4CAF50';
+                        borderColor = '#2E7D32';
+                    }
                 }
                 
                 const marker = L.circleMarker([lat, lng], {
@@ -315,8 +326,9 @@ async function loadDistrict(districtInfo) {
                     // Google Street View URL - opens Street View camera directly
                     const streetViewUrl = `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${lat},${lng}`;
                     
-                    // Google Images search URL for the scientific name
-                    const imagesSearchUrl = `https://www.google.com/search?tbm=isch&q=${encodeURIComponent(species)}`;
+                    // Google Images search URL - use commonName for district 22, otherwise use scientific name
+                    const searchTerm = (districtCode === '22' && commonName) ? commonName : species;
+                    const imagesSearchUrl = `https://www.google.com/search?tbm=isch&q=${encodeURIComponent(searchTerm)}`;
                     
                     let popupContent = `<div class="tree-info">`;
                     popupContent += `<span class="tree-species">🌳 ${species}</span>`;
@@ -324,10 +336,25 @@ async function loadDistrict(districtInfo) {
                         popupContent += `<span class="tree-common-name">${commonName}</span>`;
                     }
                     popupContent += `<div class="tree-details">`;
-                    popupContent += `<div class="tree-details-item"><strong>Diámetro:</strong> ${diameter}</div>`;
-                    popupContent += `<div class="tree-details-item"><strong>Altura:</strong> ${height}</div>`;
+                    if (districtCode === '22') {
+                        popupContent += `
+                        <div class="tree-details-item">
+                            <strong>Árbol singular de la Comunidad de Madrid</strong>
+                            <a href="https://es.wikipedia.org/wiki/%C3%81rboles_singulares_de_la_Comunidad_de_Madrid"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title="Más información">
+                            ℹ️
+                            </a>
+                        </div>
+                        `;
+                    } else {
+                        popupContent += `<div class="tree-details-item"><strong>Diámetro:</strong> ${diameter}</div>`;
+                        popupContent += `<div class="tree-details-item"><strong>Altura:</strong> ${height}</div>`;
+                    }
+                    
                     popupContent += `</div>`;
-                    if (district || neighborhood) {
+                    if ((district || neighborhood) && districtCode !== '22') {
                         popupContent += `<div class="tree-location">`;
                         if (district) {
                             popupContent += `<div class="tree-location-item"><strong>Distrito:</strong> ${district}</div>`;
