@@ -18,13 +18,22 @@ PROPERTY_MAP = {
     "CODIGO_ESP": "cn",          # common name
     "diameter": "d",
     "height": "h",
-    "NBRE_DTO": "dt",            # district
+    "NBRE_DTO": "dt",            # district (removed below once map.js reads it from FC props)
     "NBRE_BARRI": "nb",          # neighborhood
     "species": "sn",
     "common_name": "cn",
     "ASSETNUM": None,            # Remove - internal ID not needed for display
     "NUM_DTO": None,             # Remove - duplicate of dt
-    "NUM_BARRIO": None           # Remove - internal barrio number
+    "NUM_BARRIO": None,          # Remove - internal barrio number
+    # Redundant coordinates (geometry already has WGS84 lat/lon) - not used by the map
+    "X": None,
+    "Y": None,
+    # District name is the same for every feature inside each district file
+    # and is already stored in FeatureCollection.properties.district_name;
+    # map.js reads it from there to avoid repeating it ~800k times.
+    "dt": None,
+    # Internal park code - not used by the map, only present in ~17% of features
+    "NUM_PARQUE": None,
 }
 
 def compress_properties(props):
@@ -61,7 +70,10 @@ def round_coordinates(coords, precision=6):
 def compress_geojson(input_path, output_path):
     """Compress a single GeoJSON file"""
     print(f"Compressing {input_path.name}...")
-    
+
+    # Measure original size BEFORE overwriting (input_path may equal output_path)
+    original_size = input_path.stat().st_size
+
     with open(input_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
     
@@ -84,9 +96,8 @@ def compress_geojson(input_path, output_path):
         json.dump(data, f, separators=(',', ':'), ensure_ascii=False)
     
     # Calculate size reduction
-    original_size = input_path.stat().st_size
     compressed_size = output_path.stat().st_size
-    reduction = (1 - compressed_size / original_size) * 100
+    reduction = (1 - compressed_size / original_size) * 100 if original_size else 0.0
     
     print(f"  Original: {original_size:,} bytes")
     print(f"  Compressed: {compressed_size:,} bytes")

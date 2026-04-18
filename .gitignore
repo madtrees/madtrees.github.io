@@ -14,6 +14,7 @@ Thumbs.db
 *.swp
 *.swo
 *~
+*venv/
 
 # Backup files
 *.bak
@@ -23,3 +24,6 @@ Thumbs.db
 trees-data.geojson
 trees-reduced.geojson
 *.geojson.bak
+.claude/settings.local.json
+.continue/mcpServers/new-mcp-server.yaml
+Untitled-1.ipynb

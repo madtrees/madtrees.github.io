@@ -246,7 +246,14 @@ async function loadDistrict(districtInfo) {
         }
         
         const data = await response.json();
-        
+
+        // District name is the same for every feature in this file, so we read it
+        // once from the FeatureCollection properties (populated by split-by-district.py)
+        // instead of storing it on every feature's properties.
+        const districtName = (data.properties && data.properties.district_name)
+            || districtInfo.name
+            || '';
+
         const districtMarkers = [];
         const chunkSize = 500; // Process trees in smaller chunks
         
@@ -308,7 +315,9 @@ async function loadDistrict(districtInfo) {
                     const commonName = props.cn || props.common_name || props.CODIGO_ESP || "";
                     const diameter = props.d || props.diameter ? `${props.d || props.diameter} cm` : "N/A";
                     const height = props.h || props.height ? `${props.h || props.height} m` : "N/A";
-                    const district = props.dt || props.NBRE_DTO || "";
+                    // District is read from the enclosing FeatureCollection (districtName)
+                    // rather than from every feature, which removes ~15 MB of redundant data.
+                    const district = districtName || props.dt || props.NBRE_DTO || "";
                     const neighborhood = props.nb || props.NBRE_BARRI || "";
                     
                     // Track tree marker click in Google Analytics
