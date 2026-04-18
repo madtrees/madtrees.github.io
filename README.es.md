@@ -377,6 +377,8 @@ Este proyecto es de código abierto. Los datos de árboles pertenecen a la comun
 Proyectos usando esta plantilla:
 - Árboles de Madrid: https://github.com/madtrees/madtrees
 - Árboles de Barcelona: https://github.com/barcelonatrees/barcelonatrees
+- Árboles de Santa Cruz de Tenerife: https://github.com/santacruztrees/santacruztrees.github.io
+- Árboles de Sevilla: https://github.com/sevillatrees/sevillatrees.github.io
 
 ---
 
