@@ -15,6 +15,11 @@ Thumbs.db
 *.swo
 *~
 *venv/
+__pycache__/
+*.py[cod]
+
+# Raw municipal source files (large and not needed by the web app)
+data/crude-data/
 
 # Backup files
 *.bak

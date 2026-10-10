@@ -1,5 +1,5 @@
 {
-  "total_trees": 793147,
+  "total_trees": 793199,
   "total_districts": 22,
   "districts": [
     {
@@ -7,161 +7,161 @@
       "name": "CENTRO",
       "filename": "district_01_CENTRO.geojson",
       "tree_count": 14188,
-      "size_mb": 5.247183799743652
+      "size_mb": 2.5681533813476562
     },
     {
       "code": "02",
       "name": "ARGANZUELA",
       "filename": "district_02_ARGANZUELA.geojson",
       "tree_count": 29281,
-      "size_mb": 10.741584777832031
+      "size_mb": 5.116978645324707
     },
     {
       "code": "03",
       "name": "RETIRO",
       "filename": "district_03_RETIRO.geojson",
       "tree_count": 31090,
-      "size_mb": 11.445209503173828
+      "size_mb": 5.601261138916016
     },
     {
       "code": "04",
       "name": "SALAMANCA",
       "filename": "district_04_SALAMANCA.geojson",
       "tree_count": 20672,
-      "size_mb": 7.716063499450684
+      "size_mb": 3.7718982696533203
     },
     {
       "code": "05",
       "name": "CHAMARTIN",
       "filename": "district_05_CHAMARTIN.geojson",
       "tree_count": 25784,
-      "size_mb": 9.636777877807617
+      "size_mb": 4.708460807800293
     },
     {
       "code": "06",
       "name": "TETUAN",
       "filename": "district_06_TETUAN.geojson",
-      "tree_count": 15172,
-      "size_mb": 5.659675598144531
+      "tree_count": 15149,
+      "size_mb": 2.7897720336914062
     },
     {
       "code": "07",
       "name": "CHAMBERI",
       "filename": "district_07_CHAMBERI.geojson",
       "tree_count": 13748,
-      "size_mb": 5.168824195861816
+      "size_mb": 2.556203842163086
     },
     {
       "code": "08",
       "name": "FUENCARRAL-EL PARDO",
       "filename": "district_08_FUENCARRAL-EL_PARDO.geojson",
       "tree_count": 60369,
-      "size_mb": 22.691161155700684
+      "size_mb": 10.560372352600098
     },
     {
       "code": "09",
       "name": "MONCLOA-ARAVACA",
       "filename": "district_09_MONCLOA-ARAVACA.geojson",
       "tree_count": 55487,
-      "size_mb": 20.8072452545166
+      "size_mb": 9.889312744140625
     },
     {
       "code": "10",
       "name": "LATINA",
       "filename": "district_10_LATINA.geojson",
       "tree_count": 38049,
-      "size_mb": 13.861923217773438
+      "size_mb": 6.696100234985352
     },
     {
       "code": "11",
       "name": "CARABANCHEL",
       "filename": "district_11_CARABANCHEL.geojson",
       "tree_count": 44339,
-      "size_mb": 16.428312301635742
+      "size_mb": 7.841516494750977
     },
     {
       "code": "12",
       "name": "USERA",
       "filename": "district_12_USERA.geojson",
       "tree_count": 36286,
-      "size_mb": 13.13947582244873
+      "size_mb": 6.3207597732543945
     },
     {
       "code": "13",
       "name": "PUENTE DE VALLECAS",
       "filename": "district_13_PUENTE_DE_VALLECAS.geojson",
       "tree_count": 51025,
-      "size_mb": 19.30048656463623
+      "size_mb": 9.076091766357422
     },
     {
       "code": "14",
       "name": "MORATALAZ",
       "filename": "district_14_MORATALAZ.geojson",
       "tree_count": 38061,
-      "size_mb": 13.808364868164062
+      "size_mb": 6.509617805480957
     },
     {
       "code": "15",
       "name": "CIUDAD LINEAL",
       "filename": "district_15_CIUDAD_LINEAL.geojson",
       "tree_count": 37369,
-      "size_mb": 13.913352966308594
+      "size_mb": 6.618762016296387
     },
     {
       "code": "16",
       "name": "HORTALEZA",
       "filename": "district_16_HORTALEZA.geojson",
       "tree_count": 73228,
-      "size_mb": 26.860295295715332
+      "size_mb": 12.850624084472656
     },
     {
       "code": "17",
       "name": "VILLAVERDE",
       "filename": "district_17_VILLAVERDE.geojson",
       "tree_count": 47297,
-      "size_mb": 17.713098526000977
+      "size_mb": 8.604639053344727
     },
     {
       "code": "18",
       "name": "VILLA DE VALLECAS",
       "filename": "district_18_VILLA_DE_VALLECAS.geojson",
       "tree_count": 40226,
-      "size_mb": 15.490976333618164
+      "size_mb": 7.469579696655273
     },
     {
       "code": "19",
       "name": "VICALVARO",
       "filename": "district_19_VICALVARO.geojson",
       "tree_count": 31780,
-      "size_mb": 11.929816246032715
+      "size_mb": 5.837706565856934
     },
     {
       "code": "20",
       "name": "SAN BLAS-CANILLEJAS",
       "filename": "district_20_SAN_BLAS-CANILLEJAS.geojson",
       "tree_count": 54724,
-      "size_mb": 20.423747062683105
+      "size_mb": 9.441518783569336
     },
     {
       "code": "21",
       "name": "BARAJAS",
       "filename": "district_21_BARAJAS.geojson",
       "tree_count": 34838,
-      "size_mb": 12.764150619506836
+      "size_mb": 6.154482841491699
     },
     {
       "code": "22",
       "name": "ESPECIAL",
       "filename": "district_22_ARBOLES_SINGULARES.geojson",
       "tree_count": 175,
-      "size_mb": 0.020812000000000000
+      "size_mb": 0.031447410583496094
     },
     {
       "code": "99",
       "name": "OTROS MUNICIPIOS",
       "filename": "district_99_OTROS_MUNICIPIOS.geojson",
       "tree_count": 34,
-      "size_mb": 0.013051986694335938
+      "size_mb": 0.006279945373535156
     }
   ]
 }

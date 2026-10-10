@@ -12,6 +12,496 @@ const loadingText = document.getElementById('loading-text');
 const loadingProgress = document.getElementById('loading-progress');
 const performanceIndicator = document.getElementById('performance-indicator');
 const fpsElement = performanceIndicator ? performanceIndicator.querySelector('.fps') : null;
+const speciesSearchInput = document.getElementById('species-search-input');
+const speciesSuggestions = document.getElementById('species-suggestions');
+const speciesTags = document.getElementById('species-tags');
+const speciesFilterStatus = document.getElementById('species-filter-status');
+
+const speciesState = {
+    catalog: new Map(),
+    selected: new Set(),
+    allMarkers: [],
+    activeSuggestion: -1,
+    renderedSuggestions: [],
+    uiRefreshFrame: null
+};
+
+const MAX_SPECIES_SUGGESTIONS = 10;
+const speciesImageCache = new Map();
+const WIKIPEDIA_API_URL = 'https://es.wikipedia.org/w/api.php';
+const WIKIMEDIA_COMMONS_API_URL = 'https://commons.wikimedia.org/w/api.php';
+
+function metadataText(value) {
+    if (!value) return '';
+    const documentFragment = new DOMParser().parseFromString(String(value), 'text/html');
+    return (documentFragment.body.textContent || '').replace(/\s+/g, ' ').trim();
+}
+
+function safeExternalUrl(value) {
+    if (!value) return '';
+
+    try {
+        const normalizedValue = String(value).startsWith('//') ? `https:${value}` : String(value);
+        const url = new URL(normalizedValue);
+        return url.protocol === 'https:' || url.protocol === 'http:' ? url.href : '';
+    } catch {
+        return '';
+    }
+}
+
+async function fetchJsonWithTimeout(url, timeout = 8000) {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), timeout);
+
+    try {
+        const response = await fetch(url, { signal: controller.signal });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return await response.json();
+    } finally {
+        clearTimeout(timeoutId);
+    }
+}
+
+function getWikipediaTitleCandidates(scientificName) {
+    const candidates = [scientificName.trim()];
+    const withoutCultivar = scientificName
+        .replace(/\s+(?:cv\.\s*)?['"][^'"]+['"]\s*$/i, '')
+        .trim();
+
+    if (withoutCultivar && withoutCultivar !== candidates[0]) {
+        candidates.push(withoutCultivar);
+    }
+
+    return candidates;
+}
+
+async function queryWikimediaSpeciesImage(scientificName) {
+    for (const title of getWikipediaTitleCandidates(scientificName)) {
+        const wikipediaParams = new URLSearchParams({
+            action: 'query',
+            format: 'json',
+            origin: '*',
+            prop: 'pageimages|info',
+            inprop: 'url',
+            piprop: 'thumbnail|name',
+            pithumbsize: '640',
+            pilicense: 'free',
+            redirects: '1',
+            titles: title
+        });
+
+        const wikipediaData = await fetchJsonWithTimeout(`${WIKIPEDIA_API_URL}?${wikipediaParams}`);
+        const page = Object.values(wikipediaData.query?.pages || {})[0];
+        if (!page || Object.prototype.hasOwnProperty.call(page, 'missing') || !page.thumbnail?.source || !page.pageimage) {
+            continue;
+        }
+
+        const commonsParams = new URLSearchParams({
+            action: 'query',
+            format: 'json',
+            origin: '*',
+            prop: 'imageinfo',
+            iiprop: 'url|extmetadata',
+            iiurlwidth: '640',
+            titles: `File:${page.pageimage}`
+        });
+
+        const commonsData = await fetchJsonWithTimeout(`${WIKIMEDIA_COMMONS_API_URL}?${commonsParams}`);
+        const commonsPage = Object.values(commonsData.query?.pages || {})[0];
+        const imageInfo = commonsPage?.imageinfo?.[0];
+        const metadata = imageInfo?.extmetadata || {};
+        const imageUrl = safeExternalUrl(imageInfo?.thumburl || page.thumbnail.source);
+        const sourceUrl = safeExternalUrl(imageInfo?.descriptionurl || page.fullurl);
+        const author = metadataText(metadata.Attribution?.value || metadata.Artist?.value);
+        const license = metadataText(metadata.LicenseShortName?.value);
+        const licenseUrl = safeExternalUrl(metadata.LicenseUrl?.value);
+
+        // Only display images whose source and licensing metadata can be linked.
+        if (!imageUrl || !sourceUrl || (!author && !license)) continue;
+
+        return {
+            imageUrl,
+            sourceUrl,
+            author: author || 'Autor indicado en Wikimedia Commons',
+            license: license || 'Licencia indicada en Wikimedia Commons',
+            licenseUrl,
+            wikipediaUrl: safeExternalUrl(page.fullurl),
+            matchedTitle: page.title
+        };
+    }
+
+    return null;
+}
+
+function getSpeciesImage(scientificName) {
+    const cacheKey = normalizeSpeciesName(scientificName);
+    if (!cacheKey) return Promise.resolve(null);
+
+    if (!speciesImageCache.has(cacheKey)) {
+        const imagePromise = queryWikimediaSpeciesImage(scientificName).catch(error => {
+            console.warn(`No se pudo cargar la imagen de ${scientificName}:`, error.message);
+            return null;
+        });
+        speciesImageCache.set(cacheKey, imagePromise);
+    }
+
+    return speciesImageCache.get(cacheKey);
+}
+
+function createExternalLink(url, text, className = '') {
+    const link = document.createElement('a');
+    link.href = url;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.textContent = text;
+    if (className) link.className = className;
+    return link;
+}
+
+async function loadSpeciesImageIntoPopup(marker, scientificName, container) {
+    const imageData = await getSpeciesImage(scientificName);
+    const popup = marker.getPopup();
+
+    if (!container) return;
+    if (!imageData) {
+        container.remove();
+        popup.update();
+        return;
+    }
+
+    const figure = document.createElement('figure');
+    const imageLink = createExternalLink(imageData.sourceUrl, '');
+    imageLink.title = `Ver imagen y licencia en Wikimedia Commons`;
+
+    const image = document.createElement('img');
+    image.src = imageData.imageUrl;
+    image.alt = scientificName;
+    image.loading = 'lazy';
+    image.decoding = 'async';
+    image.addEventListener('load', () => popup.update(), { once: true });
+    image.addEventListener('error', () => {
+        container.remove();
+        popup.update();
+    }, { once: true });
+    imageLink.appendChild(image);
+
+    const caption = document.createElement('figcaption');
+    caption.append('Foto: ', createExternalLink(imageData.sourceUrl, imageData.author));
+    caption.append(' · ');
+    if (imageData.licenseUrl) {
+        caption.appendChild(createExternalLink(imageData.licenseUrl, imageData.license));
+    } else {
+        caption.append(imageData.license);
+    }
+    caption.append(' · ', createExternalLink(imageData.sourceUrl, 'Wikimedia Commons'));
+
+    figure.append(imageLink, caption);
+    container.replaceChildren(figure);
+    popup.update();
+}
+
+/**
+ * Normalize names once when they enter the catalog. This makes every keystroke
+ * a very small, accent-insensitive lookup over unique species rather than over
+ * hundreds of thousands of markers.
+ */
+function normalizeSpeciesName(value) {
+    return String(value || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLocaleLowerCase('es')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+function getSpeciesInfo(props) {
+    const scientificName = String(props.sn || props.species || props["Nombre científico"] || '').trim();
+    const commonName = String(props.cn || props.common_name || props.CODIGO_ESP || '').trim();
+    const normalizedScientific = normalizeSpeciesName(scientificName);
+    const normalizedCommon = normalizeSpeciesName(commonName);
+
+    if (!normalizedScientific && !normalizedCommon) return null;
+
+    return {
+        id: normalizedScientific ? `scientific:${normalizedScientific}` : `common:${normalizedCommon}`,
+        scientificName,
+        commonName
+    };
+}
+
+function scheduleSpeciesUiRefresh() {
+    if (speciesState.uiRefreshFrame !== null) return;
+
+    speciesState.uiRefreshFrame = requestAnimationFrame(() => {
+        speciesState.uiRefreshFrame = null;
+        updateSpeciesFilterStatus();
+        if (speciesSearchInput && document.activeElement === speciesSearchInput && speciesSearchInput.value.trim()) {
+            renderSpeciesSuggestions();
+        }
+    });
+}
+
+function registerSpecies(props, marker) {
+    speciesState.allMarkers.push(marker);
+    const info = getSpeciesInfo(props);
+    if (!info) return null;
+
+    let record = speciesState.catalog.get(info.id);
+    let catalogChanged = false;
+
+    if (!record) {
+        record = {
+            id: info.id,
+            scientificName: info.scientificName,
+            commonNames: new Set(),
+            normalizedScientific: normalizeSpeciesName(info.scientificName),
+            normalizedCommonNames: [],
+            searchText: '',
+            markers: []
+        };
+        speciesState.catalog.set(info.id, record);
+        catalogChanged = true;
+    }
+
+    if (info.commonName && !record.commonNames.has(info.commonName)) {
+        record.commonNames.add(info.commonName);
+        record.normalizedCommonNames = Array.from(record.commonNames, normalizeSpeciesName);
+        catalogChanged = true;
+    }
+
+    if (!record.scientificName && info.scientificName) {
+        record.scientificName = info.scientificName;
+        record.normalizedScientific = normalizeSpeciesName(info.scientificName);
+        catalogChanged = true;
+    }
+
+    if (catalogChanged) {
+        record.searchText = [record.normalizedScientific, ...record.normalizedCommonNames].join(' ');
+        scheduleSpeciesUiRefresh();
+    }
+
+    record.markers.push(marker);
+    marker.speciesId = record.id;
+    return record.id;
+}
+
+function getSpeciesDisplayName(record) {
+    return record.commonNames.values().next().value || record.scientificName || 'Especie sin nombre';
+}
+
+function getSpeciesSecondaryName(record) {
+    const commonName = record.commonNames.values().next().value;
+    return commonName && record.scientificName && commonName !== record.scientificName
+        ? record.scientificName
+        : '';
+}
+
+function getMatchingSpecies(query) {
+    const normalizedQuery = normalizeSpeciesName(query);
+    if (!normalizedQuery) return [];
+
+    const matches = [];
+    for (const record of speciesState.catalog.values()) {
+        if (speciesState.selected.has(record.id) || !record.searchText.includes(normalizedQuery)) continue;
+
+        const startsWithCommon = record.normalizedCommonNames.some(name => name.startsWith(normalizedQuery));
+        const startsWithScientific = record.normalizedScientific.startsWith(normalizedQuery);
+        const score = startsWithCommon ? 0 : startsWithScientific ? 1 : 2;
+        matches.push({ record, score });
+    }
+
+    matches.sort((a, b) => a.score - b.score
+        || getSpeciesDisplayName(a.record).localeCompare(getSpeciesDisplayName(b.record), 'es'));
+
+    return matches.slice(0, MAX_SPECIES_SUGGESTIONS).map(match => match.record);
+}
+
+function closeSpeciesSuggestions() {
+    if (!speciesSuggestions || !speciesSearchInput) return;
+    speciesSuggestions.hidden = true;
+    speciesSuggestions.replaceChildren();
+    speciesSearchInput.setAttribute('aria-expanded', 'false');
+    speciesSearchInput.setAttribute('aria-activedescendant', '');
+    speciesState.activeSuggestion = -1;
+    speciesState.renderedSuggestions = [];
+}
+
+function updateActiveSuggestion() {
+    if (!speciesSuggestions || !speciesSearchInput) return;
+
+    const options = speciesSuggestions.querySelectorAll('[role="option"]');
+    options.forEach((option, index) => {
+        const isActive = index === speciesState.activeSuggestion;
+        option.classList.toggle('active', isActive);
+        option.setAttribute('aria-selected', String(isActive));
+    });
+
+    const activeOption = options[speciesState.activeSuggestion];
+    speciesSearchInput.setAttribute('aria-activedescendant', activeOption ? activeOption.id : '');
+    if (activeOption) activeOption.scrollIntoView({ block: 'nearest' });
+}
+
+function renderSpeciesSuggestions() {
+    if (!speciesSuggestions || !speciesSearchInput) return;
+
+    const query = speciesSearchInput.value;
+    if (!query.trim()) {
+        closeSpeciesSuggestions();
+        return;
+    }
+
+    const matches = getMatchingSpecies(query);
+    speciesState.renderedSuggestions = matches;
+    speciesState.activeSuggestion = -1;
+    speciesSuggestions.replaceChildren();
+
+    if (matches.length === 0) {
+        const emptyItem = document.createElement('li');
+        emptyItem.className = 'species-no-results';
+        emptyItem.textContent = districtState.isLoading ? 'Buscando mientras cargan los datos...' : 'No se encontraron especies';
+        speciesSuggestions.appendChild(emptyItem);
+    } else {
+        matches.forEach((record, index) => {
+            const option = document.createElement('li');
+            option.id = `species-option-${index}`;
+            option.className = 'species-suggestion';
+            option.setAttribute('role', 'option');
+            option.setAttribute('aria-selected', 'false');
+
+            const primary = document.createElement('span');
+            primary.className = 'species-suggestion-common';
+            primary.textContent = getSpeciesDisplayName(record);
+            option.appendChild(primary);
+
+            const secondaryName = getSpeciesSecondaryName(record);
+            if (secondaryName) {
+                const secondary = document.createElement('span');
+                secondary.className = 'species-suggestion-scientific';
+                secondary.textContent = secondaryName;
+                option.appendChild(secondary);
+            }
+
+            option.addEventListener('mousedown', event => event.preventDefault());
+            option.addEventListener('click', () => selectSpecies(record.id));
+            speciesSuggestions.appendChild(option);
+        });
+    }
+
+    speciesSuggestions.hidden = false;
+    speciesSearchInput.setAttribute('aria-expanded', 'true');
+}
+
+function renderSpeciesTags() {
+    if (!speciesTags) return;
+    speciesTags.replaceChildren();
+
+    for (const speciesId of speciesState.selected) {
+        const record = speciesState.catalog.get(speciesId);
+        if (!record) continue;
+
+        const tag = document.createElement('span');
+        tag.className = 'species-tag';
+        tag.title = [getSpeciesDisplayName(record), getSpeciesSecondaryName(record)].filter(Boolean).join(' · ');
+
+        const label = document.createElement('span');
+        label.className = 'species-tag-label';
+        label.textContent = getSpeciesDisplayName(record);
+
+        const removeButton = document.createElement('button');
+        removeButton.type = 'button';
+        removeButton.className = 'species-tag-remove';
+        removeButton.textContent = '×';
+        removeButton.setAttribute('aria-label', `Quitar ${getSpeciesDisplayName(record)} del filtro`);
+        removeButton.addEventListener('click', () => deselectSpecies(speciesId));
+
+        tag.append(label, removeButton);
+        speciesTags.appendChild(tag);
+    }
+}
+
+function updateSpeciesFilterStatus() {
+    if (!speciesFilterStatus) return;
+
+    if (speciesState.selected.size === 0) {
+        speciesFilterStatus.textContent = `${speciesState.catalog.size.toLocaleString('es-ES')} especies disponibles`;
+        return;
+    }
+
+    let matchingTrees = 0;
+    for (const speciesId of speciesState.selected) {
+        matchingTrees += speciesState.catalog.get(speciesId)?.markers.length || 0;
+    }
+
+    const speciesLabel = speciesState.selected.size === 1 ? 'especie seleccionada' : 'especies seleccionadas';
+    speciesFilterStatus.textContent = `${speciesState.selected.size} ${speciesLabel} · ${matchingTrees.toLocaleString('es-ES')} árboles cargados coinciden`;
+}
+
+function selectSpecies(speciesId) {
+    const record = speciesState.catalog.get(speciesId);
+    if (!record || speciesState.selected.has(speciesId)) return;
+
+    const isFirstSelection = speciesState.selected.size === 0;
+    speciesState.selected.add(speciesId);
+
+    if (isFirstSelection) {
+        markers.clearLayers();
+    }
+    if (record.markers.length > 0) {
+        markers.addLayers(record.markers);
+    }
+
+    renderSpeciesTags();
+    updateSpeciesFilterStatus();
+    speciesSearchInput.value = '';
+    closeSpeciesSuggestions();
+    speciesSearchInput.focus();
+}
+
+function deselectSpecies(speciesId) {
+    const record = speciesState.catalog.get(speciesId);
+    if (!record || !speciesState.selected.delete(speciesId)) return;
+
+    if (speciesState.selected.size === 0) {
+        markers.clearLayers();
+        markers.addLayers(speciesState.allMarkers);
+    } else if (record.markers.length > 0) {
+        markers.removeLayers(record.markers);
+    }
+
+    renderSpeciesTags();
+    updateSpeciesFilterStatus();
+}
+
+function setupSpeciesSearch() {
+    if (!speciesSearchInput || !speciesSuggestions) return;
+
+    speciesSearchInput.addEventListener('input', renderSpeciesSuggestions);
+    speciesSearchInput.addEventListener('focus', renderSpeciesSuggestions);
+    speciesSearchInput.addEventListener('keydown', event => {
+        const suggestionCount = speciesState.renderedSuggestions.length;
+
+        if (event.key === 'ArrowDown' && suggestionCount > 0) {
+            event.preventDefault();
+            speciesState.activeSuggestion = (speciesState.activeSuggestion + 1) % suggestionCount;
+            updateActiveSuggestion();
+        } else if (event.key === 'ArrowUp' && suggestionCount > 0) {
+            event.preventDefault();
+            speciesState.activeSuggestion = speciesState.activeSuggestion <= 0
+                ? suggestionCount - 1
+                : speciesState.activeSuggestion - 1;
+            updateActiveSuggestion();
+        } else if (event.key === 'Enter' && speciesState.activeSuggestion >= 0) {
+            event.preventDefault();
+            selectSpecies(speciesState.renderedSuggestions[speciesState.activeSuggestion].id);
+        } else if (event.key === 'Escape') {
+            closeSpeciesSuggestions();
+        }
+    });
+
+    document.addEventListener('click', event => {
+        if (!event.target.closest('#species-search-panel')) closeSpeciesSuggestions();
+    });
+}
 
 /**
  * Display an error message to the user.
@@ -105,7 +595,7 @@ const districtState = {
  */
 async function loadDistrictIndex() {
     try {
-        const response = await fetch('./data/districts/districts_index.json');
+        const response = await fetch('./data/districts/districts_index.json', { cache: 'no-store' });
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -240,7 +730,7 @@ async function loadDistrict(districtInfo) {
     console.log(`📥 Cargando distrito ${districtCode} - ${districtInfo.name}...`);
     
     try {
-        const response = await fetch(`./data/districts/${districtInfo.filename}`);
+        const response = await fetch(`./data/districts/${districtInfo.filename}`, { cache: 'no-store' });
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -309,9 +799,12 @@ async function loadDistrict(districtInfo) {
                     opacity: 0.8,
                     fillOpacity: 0.6
                 });
+
+                registerSpecies(props, marker);
                 
                 marker.on('click', function() {
-                    const species = props.sn || props.species || props["Nombre científico"] || "Especie desconocida";
+                    const scientificName = props.sn || props.species || props["Nombre científico"] || "";
+                    const species = scientificName || "Especie desconocida";
                     const commonName = props.cn || props.common_name || props.CODIGO_ESP || "";
                     const diameter = props.d || props.diameter ? `${props.d || props.diameter} cm` : "N/A";
                     const height = props.h || props.height ? `${props.h || props.height} m` : "N/A";
@@ -344,6 +837,9 @@ async function loadDistrict(districtInfo) {
                     if (commonName && commonName !== species) {
                         popupContent += `<span class="tree-common-name">${commonName}</span>`;
                     }
+                    if (scientificName) {
+                        popupContent += `<div class="tree-photo" aria-live="polite"><div class="tree-photo-loading">Cargando fotografía...</div></div>`;
+                    }
                     popupContent += `<div class="tree-details">`;
                     if (districtCode === '22') {
                         popupContent += `
@@ -374,12 +870,41 @@ async function loadDistrict(districtInfo) {
                         popupContent += `</div>`;
                     }
                     popupContent += `<div class="tree-buttons">`;
-                    popupContent += `<a href="${streetViewUrl}" target="_blank" rel="noopener noreferrer" class="street-view-button">🗺️</br> Street View</a>`;
-                    popupContent += `<a href="${imagesSearchUrl}" target="_blank" rel="noopener noreferrer" class="images-button">🖼️</br> Imágenes</a>`;
+                    popupContent += `
+                        <a href="${streetViewUrl}" target="_blank" rel="noopener noreferrer" class="tree-action-button street-view-button" aria-label="Abrir esta ubicación en Street View">
+                            <span class="tree-action-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path>
+                                    <circle cx="12" cy="10" r="2.5"></circle>
+                                </svg>
+                            </span>
+                            <span class="tree-action-copy"><strong>Street View</strong><small>Ver ubicación</small></span>
+                        </a>`;
+                    popupContent += `
+                        <a href="${imagesSearchUrl}" target="_blank" rel="noopener noreferrer" class="tree-action-button images-button" aria-label="Buscar imágenes de esta especie">
+                            <span class="tree-action-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="4" width="18" height="16" rx="3"></rect>
+                                    <circle cx="8.5" cy="9" r="1.5"></circle>
+                                    <path d="m21 15-4.5-4.5L7 20"></path>
+                                </svg>
+                            </span>
+                            <span class="tree-action-copy"><strong>Imágenes</strong><small>Ver especie</small></span>
+                        </a>`;
                     popupContent += `</div>`;
                     popupContent += `</div>`;
                     
-                    marker.bindPopup(popupContent).openPopup();
+                    const popupElement = document.createElement('div');
+                    popupElement.innerHTML = popupContent;
+                    marker.bindPopup(popupElement).openPopup();
+                    if (scientificName) {
+                        const photoContainer = popupElement.querySelector('.tree-photo');
+                        loadSpeciesImageIntoPopup(marker, scientificName, photoContainer).catch(error => {
+                            console.warn(`No se pudo mostrar la imagen de ${scientificName}:`, error.message);
+                            photoContainer?.remove();
+                            marker.getPopup()?.update();
+                        });
+                    }
                 });
                 
                 districtMarkers.push(marker);
@@ -389,14 +914,22 @@ async function loadDistrict(districtInfo) {
             if (i > 0 && i % chunkSize === 0) {
                 // Add current chunk to map
                 const currentChunk = districtMarkers.splice(0);
-                markers.addLayers(currentChunk);
+                const visibleChunk = speciesState.selected.size === 0
+                    ? currentChunk
+                    : currentChunk.filter(marker => speciesState.selected.has(marker.speciesId));
+                if (visibleChunk.length > 0) markers.addLayers(visibleChunk);
+                scheduleSpeciesUiRefresh();
                 await yieldToMain();
             }
         }
         
         // Add remaining markers
         if (districtMarkers.length > 0) {
-            markers.addLayers(districtMarkers);
+            const visibleMarkers = speciesState.selected.size === 0
+                ? districtMarkers
+                : districtMarkers.filter(marker => speciesState.selected.has(marker.speciesId));
+            if (visibleMarkers.length > 0) markers.addLayers(visibleMarkers);
+            scheduleSpeciesUiRefresh();
         }
         
         districtState.districtLayers[districtCode] = true; // Just track loaded state
@@ -514,6 +1047,7 @@ function setupPerformanceMonitoring() {
 async function initialize() {
     // Initialize map layer immediately
     map.addLayer(markers);
+    setupSpeciesSearch();
     
     // Load district index in background
     loadingText.textContent = 'Cargando árboles...';

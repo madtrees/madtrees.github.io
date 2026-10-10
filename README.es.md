@@ -286,6 +286,29 @@ Este script:
 
 **Cuándo usar:** Después de ejecutar `split-by-district.py`, siempre ejecuta `compress-districts.py` antes de desplegar para optimizar velocidades de descarga.
 
+### Actualizar desde la descarga oficial (Shapefile)
+
+Ejemplo: https://datos.madrid.es/dataset/300761-0-arbolado-especies/downloads
+
+Copia el inventario de 2025 (`.shp`, `.dbf`, `.shx`, `.prj`, etc.) y la tabla
+`CODIGOS_ESPECIES_NOMBRE_CIENT.csv` en `data/crude-data/2025` y ejecuta:
+
+```bash
+python update-tree-data.py
+```
+
+El script usa exclusivamente el inventario de 2025, sustituye
+`data/districts`, regenera `districts_index.json` y conserva la capa
+`22_ARBOLES_SINGULARES`. La tabla auxiliar permite mostrar los nombres comunes
+y científicos a partir de los códigos del Shape. No requiere GeoPandas, GDAL
+ni dependencias adicionales.
+
+Si conservas más de un Shape en la carpeta, selecciona el que quieras procesar:
+
+```bash
+python update-tree-data.py --input data/crude-data/ARBOLADO_MADRID_FECHA.shp
+```
+
 ## 🐛 Solución de Problemas
 
 ### "Límite de tamaño de archivo de GitHub excedido"

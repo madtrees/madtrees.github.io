@@ -220,6 +220,60 @@
       display: block;
     }
 
+    .tree-photo {
+      margin: 10px 0 12px;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #eef3ee;
+    }
+
+    .tree-photo-loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 145px;
+      color: #667066;
+      font-size: 12px;
+      background: linear-gradient(100deg, #edf1ed 30%, #f8faf8 50%, #edf1ed 70%);
+      background-size: 200% 100%;
+      animation: tree-photo-loading 1.3s ease-in-out infinite;
+    }
+
+    @keyframes tree-photo-loading {
+      0% { background-position: 100% 0; }
+      100% { background-position: -100% 0; }
+    }
+
+    .tree-photo figure {
+      margin: 0;
+    }
+
+    .tree-photo img {
+      display: block;
+      width: 100%;
+      height: 155px;
+      object-fit: cover;
+      background: #edf1ed;
+    }
+
+    .tree-photo figcaption {
+      padding: 6px 8px 7px;
+      color: #687068;
+      font-size: 10px;
+      line-height: 1.35;
+      background: #f8faf8;
+    }
+
+    .tree-photo figcaption a {
+      color: #39753c;
+      text-decoration: none;
+    }
+
+    .tree-photo figcaption a:hover,
+    .tree-photo figcaption a:focus {
+      text-decoration: underline;
+    }
+
     .tree-info .tree-details {
       margin: 12px 0;
       padding-top: 12px;
@@ -245,57 +299,115 @@
 
     .tree-buttons {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       margin-top: 16px;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
     }
 
-    .street-view-button,
-    .images-button {
+    .tree-action-button {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      background-color: #4CAF50;
-      color: white !important;
-      padding: 10px 16px;
-      border-radius: 6px;
+      gap: 8px;
+      color: #315d34 !important;
+      padding: 8px 10px;
+      border: 1px solid #b9cfba;
+      border-radius: 8px;
       text-decoration: none;
-      font-size: 13px;
-      font-weight: 700;
-      transition: all 0.2s ease;
-      flex: 1;
+      transition: background-color 0.18s ease, border-color 0.18s ease;
+      flex: 1 1 0;
       min-width: 0;
-      text-align: center;
-      box-shadow: 0 2px 4px rgba(76, 175, 80, 0.2);
-      min-height: 44px;
+      min-height: 52px;
       cursor: pointer;
-      border: none;
     }
 
-    .street-view-button:hover,
-    .images-button:hover {
-      background-color: #45a049;
-      color: white !important;
+    .street-view-button {
+      background: #f3f8f3;
+      border-color: #a9c9ac;
+    }
+
+    .images-button {
+      background: #f6f8f1;
+      border-color: #bdcca8;
+      color: #496232 !important;
+    }
+
+    .tree-action-icon {
+      display: inline-grid;
+      place-items: center;
+      flex: 0 0 34px;
+      width: 34px;
+      height: 34px;
+      border-radius: 6px;
+      background: transparent;
+      border: 1px solid currentColor;
+      opacity: 0.82;
+    }
+
+    .tree-action-icon svg {
+      width: 19px;
+      height: 19px;
+    }
+
+    .tree-action-copy {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      line-height: 1.08;
+      text-align: left;
+    }
+
+    .tree-info .tree-action-copy strong {
+      color: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .tree-action-copy small {
+      margin-top: 4px;
+      color: #718071;
+      font-size: 9px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .tree-action-button:hover {
       text-decoration: none;
-      box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
-      transform: translateY(-1px);
+      background: #e8f2e8;
+      border-color: #78a77c;
     }
 
-    .street-view-button:active,
-    .images-button:active {
-      transform: translateY(0);
-      box-shadow: 0 2px 4px rgba(76, 175, 80, 0.2);
+    .images-button:hover {
+      background: #edf2e4;
+      border-color: #8ba46e;
+      color: #3d5729 !important;
     }
 
-    .street-view-button:visited,
+    .tree-action-button:active {
+      background: #dfeadf;
+    }
+
+    .tree-action-button:visited {
+      color: #315d34 !important;
+    }
+
     .images-button:visited {
-      color: white !important;
+      color: #496232 !important;
     }
 
-    .street-view-button:focus,
-    .images-button:focus {
-      outline: 2px solid #4CAF50;
-      outline-offset: 2px;
+    .tree-action-button:focus-visible {
+      outline: 3px solid rgba(22, 138, 85, 0.32);
+      outline-offset: 3px;
+    }
+
+    .images-button:focus-visible {
+      outline-color: rgba(57, 119, 47, 0.34);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tree-action-button {
+        transition: none;
+      }
     }
 
     /* Optimize leaflet canvas rendering */
@@ -343,6 +455,189 @@
     #performance-indicator .fps {
       color: #4CAF50;
       font-weight: bold;
+    }
+
+    /* Species search and multi-select filter */
+    #species-search-panel {
+      position: absolute;
+      top: 10px;
+      left: 50px;
+      width: min(620px, calc(100vw - 380px));
+      min-width: 320px;
+      z-index: 1100;
+      font-size: 14px;
+    }
+
+    .species-search-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .species-combobox {
+      position: relative;
+      flex: 1 1 280px;
+      min-width: 220px;
+    }
+
+    #species-search-input {
+      width: 100%;
+      min-height: 42px;
+      padding: 10px 38px 10px 14px;
+      border: 1px solid #d2d8d2;
+      border-radius: 9px;
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      color: #243024;
+      font: inherit;
+      outline: none;
+    }
+
+    #species-search-input:focus {
+      border-color: #388e3c;
+      box-shadow: 0 0 0 3px rgba(56, 142, 60, 0.18), 0 2px 10px rgba(0, 0, 0, 0.18);
+    }
+
+    .species-search-icon {
+      position: absolute;
+      top: 50%;
+      right: 13px;
+      transform: translateY(-50%);
+      color: #5f6d60;
+      pointer-events: none;
+    }
+
+    #species-suggestions {
+      position: absolute;
+      top: calc(100% + 5px);
+      left: 0;
+      right: 0;
+      max-height: 330px;
+      overflow-y: auto;
+      margin: 0;
+      padding: 5px;
+      list-style: none;
+      border: 1px solid #dce2dc;
+      border-radius: 9px;
+      background: white;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    #species-suggestions[hidden] {
+      display: none;
+    }
+
+    .species-suggestion {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 9px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .species-suggestion:hover,
+    .species-suggestion.active {
+      background: #edf7ee;
+    }
+
+    .species-suggestion-common {
+      color: #244725;
+      font-weight: 650;
+    }
+
+    .species-suggestion-scientific {
+      color: #667066;
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    .species-no-results {
+      padding: 10px;
+      color: #6b746b;
+    }
+
+    #species-tags {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .species-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 36px;
+      max-width: 260px;
+      padding: 6px 7px 6px 11px;
+      border: 1px solid #a8d5aa;
+      border-radius: 18px;
+      background: rgba(237, 247, 238, 0.98);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+      color: #245627;
+    }
+
+    .species-tag-label {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .species-tag-remove {
+      width: 23px;
+      height: 23px;
+      flex: 0 0 23px;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      color: #3c6c3f;
+      font-size: 18px;
+      line-height: 20px;
+      cursor: pointer;
+    }
+
+    .species-tag-remove:hover,
+    .species-tag-remove:focus-visible {
+      background: #cfe8d1;
+      color: #173f19;
+      outline: none;
+    }
+
+    #species-filter-status {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 3px 8px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #536054;
+      font-size: 11px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    }
+
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    @media (max-width: 850px) {
+      #species-search-panel {
+        right: 10px;
+        width: auto;
+        min-width: 0;
+      }
+
+      .info-panel {
+        top: 68px;
+      }
     }
 
     /* Info button */
@@ -540,6 +835,30 @@
   <!-- Map Container -->
   <div id="map"></div>
 
+  <!-- Fast species search and multi-select filter -->
+  <section id="species-search-panel" aria-label="Filtro de especies">
+    <div class="species-search-row">
+      <div class="species-combobox">
+        <label class="visually-hidden" for="species-search-input">Buscar por nombre común o científico</label>
+        <input
+          id="species-search-input"
+          type="search"
+          placeholder="Buscar especie..."
+          autocomplete="off"
+          role="combobox"
+          aria-autocomplete="list"
+          aria-controls="species-suggestions"
+          aria-expanded="false"
+          aria-activedescendant=""
+        >
+        <span class="species-search-icon" aria-hidden="true">⌕</span>
+        <ul id="species-suggestions" role="listbox" aria-label="Especies encontradas" hidden></ul>
+      </div>
+      <div id="species-tags" aria-label="Especies seleccionadas"></div>
+    </div>
+    <div id="species-filter-status" role="status" aria-live="polite">Preparando catálogo de especies...</div>
+  </section>
+
   <!-- Performance Indicator (optional, for debugging) -->
   <div id="performance-indicator">
     <span class="fps">--</span> visible markers
@@ -682,6 +1001,6 @@
   </script>
   
   <!-- Map Script -->
-  <script src="./map.js"></script>
+  <script src="./map.js?v=20261011-action-buttons"></script>
 </body>
 </html>
