@@ -7,6 +7,7 @@ Crea un archivo separado por cada distrito para carga dinámica.
 import json
 import os
 import sys
+import hashlib
 from collections import defaultdict
 
 def split_by_district(input_file, output_dir='data/districts'):
@@ -134,7 +135,15 @@ def split_by_district(input_file, output_dir='data/districts'):
     
     # Crear archivo de índice con metadatos
     index_file = os.path.join(output_dir, 'districts_index.json')
+    version_hash = hashlib.sha256()
+    for info in sorted(district_info, key=lambda item: item['filename']):
+        district_path = os.path.join(output_dir, info['filename'])
+        version_hash.update(info['filename'].encode('utf-8'))
+        with open(district_path, 'rb') as district_file:
+            version_hash.update(district_file.read())
+
     index_data = {
+        'data_version': version_hash.hexdigest()[:16],
         'total_trees': total_trees,
         'total_districts': len(districts),
         'districts': district_info

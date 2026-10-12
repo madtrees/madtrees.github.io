@@ -205,18 +205,27 @@ async function loadSpeciesImageIntoPopup(marker, scientificName, container) {
  * a very small, accent-insensitive lookup over unique species rather than over
  * hundreds of thousands of markers.
  */
+const normalizedSpeciesCache = new Map();
+
 function normalizeSpeciesName(value) {
-    return String(value || '')
+    const originalValue = String(value || '');
+    const cachedValue = normalizedSpeciesCache.get(originalValue);
+    if (cachedValue !== undefined) return cachedValue;
+
+    const normalizedValue = originalValue
         .normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '')
         .toLocaleLowerCase('es')
         .replace(/\s+/g, ' ')
         .trim();
+
+    normalizedSpeciesCache.set(originalValue, normalizedValue);
+    return normalizedValue;
 }
 
-function getSpeciesInfo(props) {
-    const scientificName = String(props.sn || props.species || props["Nombre científico"] || '').trim();
-    const commonName = String(props.cn || props.common_name || props.CODIGO_ESP || '').trim();
+function getSpeciesInfo(scientificNameValue, commonNameValue) {
+    const scientificName = String(scientificNameValue || '').trim();
+    const commonName = String(commonNameValue || '').trim();
     const normalizedScientific = normalizeSpeciesName(scientificName);
     const normalizedCommon = normalizeSpeciesName(commonName);
 
@@ -241,9 +250,9 @@ function scheduleSpeciesUiRefresh() {
     });
 }
 
-function registerSpecies(props, marker) {
+function registerSpecies(scientificName, commonName, marker) {
     speciesState.allMarkers.push(marker);
-    const info = getSpeciesInfo(props);
+    const info = getSpeciesInfo(scientificName, commonName);
     if (!info) return null;
 
     let record = speciesState.catalog.get(info.id);
@@ -584,8 +593,82 @@ const districtState = {
     index: null,
     loadedDistricts: new Set(),
     districtLayers: {},
-    isLoading: false
+    isLoading: false,
+    dataCache: null
 };
+
+const DISTRICT_LOAD_CONCURRENCY = 4;
+const DISTRICT_CACHE_PREFIX = 'madtrees-districts-';
+const PROCESSED_DATABASE_NAME = 'madtrees-processed-districts';
+const PROCESSED_VERSION_KEY = 'madtrees-processed-data-version';
+const PROCESSED_FORMAT_VERSION = 1;
+
+function deleteProcessedDistrictDatabase() {
+    return new Promise((resolve, reject) => {
+        const request = indexedDB.deleteDatabase(PROCESSED_DATABASE_NAME);
+        request.onsuccess = () => resolve();
+        request.onerror = () => reject(request.error);
+        request.onblocked = () => reject(new Error('El borrado de IndexedDB está bloqueado'));
+    });
+}
+
+async function initializeProcessedDistrictCache(dataVersion) {
+    if (!('indexedDB' in window) || !dataVersion) return;
+
+    try {
+        const cacheVersion = `${dataVersion}:${PROCESSED_FORMAT_VERSION}`;
+        const storedVersion = localStorage.getItem(PROCESSED_VERSION_KEY);
+        if (storedVersion !== cacheVersion) {
+            await deleteProcessedDistrictDatabase();
+            localStorage.setItem(PROCESSED_VERSION_KEY, cacheVersion);
+        }
+    } catch (error) {
+        console.warn('No se pudo preparar la caché procesada de distritos:', error);
+    }
+}
+
+async function initializeDistrictCache(dataVersion) {
+    if (!('caches' in window) || !dataVersion) return;
+
+    try {
+        const cacheName = `${DISTRICT_CACHE_PREFIX}${dataVersion}`;
+        districtState.dataCache = await caches.open(cacheName);
+
+        // Old datasets are no longer useful once the index advertises a new version.
+        const cacheNames = await caches.keys();
+        await Promise.all(cacheNames
+            .filter(name => name.startsWith(DISTRICT_CACHE_PREFIX) && name !== cacheName)
+            .map(name => caches.delete(name)));
+    } catch (error) {
+        districtState.dataCache = null;
+        console.warn('No se pudo inicializar la caché persistente de distritos:', error);
+    }
+}
+
+async function fetchDistrictData(filename) {
+    const url = new URL(`./data/districts/${filename}`, window.location.href).href;
+
+    if (districtState.dataCache) {
+        const cachedResponse = await districtState.dataCache.match(url);
+        if (cachedResponse) {
+            return cachedResponse.json();
+        }
+    }
+
+    const response = await fetch(url);
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    // Store a clone without delaying parsing and marker creation for this visit.
+    if (districtState.dataCache) {
+        districtState.dataCache.put(url, response.clone()).catch(error => {
+            console.warn(`No se pudo guardar ${filename} en caché:`, error);
+        });
+    }
+
+    return response.json();
+}
 
 /**
  * Load the district index JSON file containing metadata about all districts.
@@ -600,6 +683,10 @@ async function loadDistrictIndex() {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         districtState.index = await response.json();
+        await Promise.all([
+            initializeDistrictCache(districtState.index.data_version),
+            initializeProcessedDistrictCache(districtState.index.data_version)
+        ]);
         console.log(`📋 Índice cargado: ${districtState.index.total_districts} distritos, ${districtState.index.total_trees.toLocaleString()} árboles`);
         return true;
     } catch (error) {
@@ -720,7 +807,7 @@ function calculateMarkerRadius(props) {
  * @param {Object} districtInfo - District information object with code, name, and filename
  * @returns {Promise<void>} Resolves when district is loaded (or skipped if already loaded)
  */
-async function loadDistrict(districtInfo) {
+async function loadDistrictLegacy(districtInfo) {
     const districtCode = districtInfo.code;
     
     if (districtState.loadedDistricts.has(districtCode)) {
@@ -730,12 +817,7 @@ async function loadDistrict(districtInfo) {
     console.log(`📥 Cargando distrito ${districtCode} - ${districtInfo.name}...`);
     
     try {
-        const response = await fetch(`./data/districts/${districtInfo.filename}`, { cache: 'no-store' });
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const data = await response.json();
+        const data = await fetchDistrictData(districtInfo.filename);
 
         // District name is the same for every feature in this file, so we read it
         // once from the FeatureCollection properties (populated by split-by-district.py)
@@ -745,7 +827,7 @@ async function loadDistrict(districtInfo) {
             || '';
 
         const districtMarkers = [];
-        const chunkSize = 500; // Process trees in smaller chunks
+        const chunkSize = 10000;
         
         for (let i = 0; i < data.features.length; i++) {
             const feature = data.features[i];
@@ -800,7 +882,11 @@ async function loadDistrict(districtInfo) {
                     fillOpacity: 0.6
                 });
 
-                registerSpecies(props, marker);
+                registerSpecies(
+                    props.sn || props.species || props["Nombre científico"] || '',
+                    props.cn || props.common_name || props.CODIGO_ESP || '',
+                    marker
+                );
                 
                 marker.on('click', function() {
                     const scientificName = props.sn || props.species || props["Nombre científico"] || "";
@@ -942,6 +1028,235 @@ async function loadDistrict(districtInfo) {
     }
 }
 
+const TREE_MARKER_STYLES = [
+    { fillColor: '#4CAF50', color: '#2E7D32' },
+    { fillColor: '#2E7D32', color: '#1B5E20' },
+    { fillColor: '#2D4A3A', color: '#1B3A2A' },
+    { fillColor: '#9C27B0', color: '#6A1B9A' }
+];
+const MARKER_CREATION_BATCH_SIZE = 10000;
+
+function preparedString(dictionary, id) {
+    return id === DistrictData.MISSING_STRING_ID ? '' : dictionary[id] || '';
+}
+
+function handleTreeMarkerClick(event) {
+    const marker = event.target;
+    const data = marker.treeData;
+    const index = marker.treeIndex;
+    const lat = data.coordinates[index * 2];
+    const lng = data.coordinates[index * 2 + 1];
+    const scientificName = preparedString(data.scientificNames, data.scientificNameIds[index]);
+    const species = scientificName || 'Especie desconocida';
+    const commonName = preparedString(data.commonNames, data.commonNameIds[index]);
+    const diameterValue = data.diameters[index];
+    const heightValue = data.heights[index];
+    const diameterNumber = Number.isFinite(diameterValue) ? Math.round(diameterValue * 100) / 100 : null;
+    const heightNumber = Number.isFinite(heightValue) ? Math.round(heightValue * 100) / 100 : null;
+    const diameter = diameterNumber !== null ? `${diameterNumber} cm` : 'N/A';
+    const height = heightNumber !== null ? `${heightNumber} m` : 'N/A';
+    const district = data.districtName;
+    const neighborhood = preparedString(data.neighborhoods, data.neighborhoodIds[index]);
+
+    if (typeof gtag === 'function') {
+        gtag('event', 'tree_marker_click', {
+            'tree_species': species,
+            'tree_common_name': commonName,
+            'tree_height': heightNumber,
+            'tree_diameter': diameterNumber,
+            'tree_district': district,
+            'tree_neighborhood': neighborhood
+        });
+    }
+
+    const streetViewUrl = `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${lat},${lng}`;
+    const searchTerm = data.code === '22' && commonName ? commonName : species;
+    const imagesSearchUrl = `https://www.google.com/search?tbm=isch&q=${encodeURIComponent(searchTerm)}`;
+
+    let popupContent = `<div class="tree-info">`;
+    popupContent += `<span class="tree-species">🌳 ${species}</span>`;
+    if (commonName && commonName !== species) {
+        popupContent += `<span class="tree-common-name">${commonName}</span>`;
+    }
+    if (scientificName) {
+        popupContent += `<div class="tree-photo" aria-live="polite"><div class="tree-photo-loading">Cargando fotografía...</div></div>`;
+    }
+    popupContent += `<div class="tree-details">`;
+    if (data.code === '22') {
+        popupContent += `
+            <div class="tree-details-item">
+                <strong>Árbol singular de la Comunidad de Madrid</strong>
+                <a href="https://es.wikipedia.org/wiki/%C3%81rboles_singulares_de_la_Comunidad_de_Madrid"
+                   target="_blank" rel="noopener noreferrer" title="Más información">ℹ️</a>
+            </div>`;
+    } else {
+        popupContent += `<div class="tree-details-item"><strong>Diámetro:</strong> ${diameter}</div>`;
+        popupContent += `<div class="tree-details-item"><strong>Altura:</strong> ${height}</div>`;
+    }
+    popupContent += `</div>`;
+
+    if ((district || neighborhood) && data.code !== '22') {
+        popupContent += `<div class="tree-location">`;
+        if (district) popupContent += `<div class="tree-location-item"><strong>Distrito:</strong> ${district}</div>`;
+        if (neighborhood) popupContent += `<div class="tree-location-item"><strong>Barrio:</strong> ${neighborhood}</div>`;
+        popupContent += `</div>`;
+    }
+
+    popupContent += `<div class="tree-buttons">
+        <a href="${streetViewUrl}" target="_blank" rel="noopener noreferrer" class="tree-action-button street-view-button" aria-label="Abrir esta ubicación en Street View">
+            <span class="tree-action-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="2.5"></circle>
+                </svg>
+            </span>
+            <span class="tree-action-copy"><strong>Street View</strong><small>Ver ubicación</small></span>
+        </a>
+        <a href="${imagesSearchUrl}" target="_blank" rel="noopener noreferrer" class="tree-action-button images-button" aria-label="Buscar imágenes de esta especie">
+            <span class="tree-action-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="16" rx="3"></rect><circle cx="8.5" cy="9" r="1.5"></circle><path d="m21 15-4.5-4.5L7 20"></path>
+                </svg>
+            </span>
+            <span class="tree-action-copy"><strong>Imágenes</strong><small>Ver especie</small></span>
+        </a>
+    </div></div>`;
+
+    const popupElement = document.createElement('div');
+    popupElement.innerHTML = popupContent;
+    marker.bindPopup(popupElement).openPopup();
+    if (scientificName) {
+        const photoContainer = popupElement.querySelector('.tree-photo');
+        loadSpeciesImageIntoPopup(marker, scientificName, photoContainer).catch(error => {
+            console.warn(`No se pudo mostrar la imagen de ${scientificName}:`, error.message);
+            photoContainer?.remove();
+            marker.getPopup()?.update();
+        });
+    }
+}
+
+const districtWorkerSlots = [];
+const districtWorkerQueue = [];
+
+function attachDistrictWorker(slot) {
+    const worker = new Worker('./district-worker.js?v=20261012-worker-cache');
+    slot.worker = worker;
+
+    worker.onmessage = event => {
+        const task = slot.task;
+        slot.task = null;
+        if (event.data.ok) task.resolve(event.data);
+        else task.reject(new Error(event.data.error));
+        runNextDistrictWorkerTask();
+    };
+    worker.onerror = event => {
+        const task = slot.task;
+        slot.task = null;
+        worker.terminate();
+        attachDistrictWorker(slot);
+        if (task) task.reject(new Error(event.message || 'Error desconocido en el Web Worker'));
+        runNextDistrictWorkerTask();
+    };
+}
+
+function initializeDistrictWorkerPool() {
+    if (districtWorkerSlots.length > 0) return;
+
+    for (let i = 0; i < DISTRICT_LOAD_CONCURRENCY; i++) {
+        const slot = { worker: null, task: null };
+        attachDistrictWorker(slot);
+        districtWorkerSlots.push(slot);
+    }
+}
+
+function runNextDistrictWorkerTask() {
+    for (const slot of districtWorkerSlots) {
+        if (slot.task || districtWorkerQueue.length === 0) continue;
+
+        const task = districtWorkerQueue.shift();
+        const url = new URL(`./data/districts/${task.districtInfo.filename}`, window.location.href).href;
+        slot.task = task;
+        slot.worker.postMessage({
+            districtInfo: task.districtInfo,
+            url,
+            dataVersion: districtState.index.data_version
+        });
+    }
+}
+
+function prepareDistrictInWorker(districtInfo) {
+    initializeDistrictWorkerPool();
+    return new Promise((resolve, reject) => {
+        districtWorkerQueue.push({ districtInfo, resolve, reject });
+        runNextDistrictWorkerTask();
+    });
+}
+
+async function loadDistrict(districtInfo) {
+    const districtCode = districtInfo.code;
+    if (districtState.loadedDistricts.has(districtCode)) return;
+
+    console.log(`📥 Cargando distrito ${districtCode} - ${districtInfo.name}...`);
+
+    if (!('Worker' in window) || !window.DistrictData) {
+        return loadDistrictLegacy(districtInfo);
+    }
+
+    try {
+        const preparedResult = await prepareDistrictInWorker(districtInfo);
+        const data = preparedResult.data;
+        const districtMarkers = [];
+
+        for (let i = 0; i < data.count; i++) {
+            const scientificName = preparedString(data.scientificNames, data.scientificNameIds[i]);
+            const commonName = preparedString(data.commonNames, data.commonNameIds[i]);
+            const style = TREE_MARKER_STYLES[data.styleIds[i]] || TREE_MARKER_STYLES[0];
+            const marker = L.circleMarker([
+                data.coordinates[i * 2],
+                data.coordinates[i * 2 + 1]
+            ], {
+                renderer: canvasRenderer,
+                radius: data.radii[i],
+                fillColor: style.fillColor,
+                color: style.color,
+                weight: 1,
+                opacity: 0.8,
+                fillOpacity: 0.6
+            });
+
+            registerSpecies(scientificName, commonName, marker);
+            marker.treeData = data;
+            marker.treeIndex = i;
+            marker.on('click', handleTreeMarkerClick);
+            districtMarkers.push(marker);
+
+            if (districtMarkers.length === MARKER_CREATION_BATCH_SIZE) {
+                const currentBatch = districtMarkers.splice(0);
+                const visibleBatch = speciesState.selected.size === 0
+                    ? currentBatch
+                    : currentBatch.filter(item => speciesState.selected.has(item.speciesId));
+                if (visibleBatch.length > 0) markers.addLayers(visibleBatch);
+                scheduleSpeciesUiRefresh();
+                await yieldToMain();
+            }
+        }
+
+        if (districtMarkers.length > 0) {
+            const visibleMarkers = speciesState.selected.size === 0
+                ? districtMarkers
+                : districtMarkers.filter(marker => speciesState.selected.has(marker.speciesId));
+            if (visibleMarkers.length > 0) markers.addLayers(visibleMarkers);
+            scheduleSpeciesUiRefresh();
+        }
+
+        districtState.districtLayers[districtCode] = true;
+        districtState.loadedDistricts.add(districtCode);
+        console.log(`✅ Distrito ${districtCode} cargado: ${data.count.toLocaleString()} árboles (${preparedResult.source})`);
+    } catch (error) {
+        console.warn(`Falló la preparación optimizada del distrito ${districtCode}; se usará el modo compatible:`, error);
+        await loadDistrictLegacy(districtInfo);
+    }
+}
+
 /**
  * Get the list of districts that should be loaded based on current map view.
  * Currently returns all districts regardless of zoom level or bounds.
@@ -964,7 +1279,8 @@ function getVisibleDistricts() {
 }
 
 /**
- * Load all visible districts one at a time to keep UI responsive.
+ * Load every district with bounded concurrency to overlap network requests while
+ * avoiding excessive memory and CPU pressure on mobile devices.
  * Updates loading progress indicator as districts are loaded.
  * 
  * Prevents concurrent loading operations using the isLoading flag.
@@ -976,26 +1292,31 @@ async function loadVisibleDistricts() {
     if (districtState.isLoading) return;
     
     districtState.isLoading = true;
-    const visibleDistricts = getVisibleDistricts();
-    
-    // Load one district at a time to keep UI responsive
-    for (let i = 0; i < visibleDistricts.length; i++) {
-        const district = visibleDistricts[i];
-        
-        if (!districtState.loadedDistricts.has(district.code)) {
+    const pendingDistricts = getVisibleDistricts()
+        .filter(district => !districtState.loadedDistricts.has(district.code))
+        .sort((a, b) => (b.size_mb || 0) - (a.size_mb || 0));
+    let nextDistrictIndex = 0;
+
+    async function loadNextDistrict() {
+        while (nextDistrictIndex < pendingDistricts.length) {
+            const district = pendingDistricts[nextDistrictIndex++];
             await loadDistrict(district);
-            
+
             const loaded = districtState.loadedDistricts.size;
             const total = districtState.index.districts.length;
             const percentage = Math.round((loaded / total) * 100);
             loadingProgress.textContent = `Distritos: ${loaded} / ${total} (${percentage}%)`;
-            
-            // Yield to browser between districts
+
             await yieldToMain();
         }
     }
-    
-    districtState.isLoading = false;
+
+    try {
+        const workerCount = Math.min(DISTRICT_LOAD_CONCURRENCY, pendingDistricts.length);
+        await Promise.all(Array.from({ length: workerCount }, loadNextDistrict));
+    } finally {
+        districtState.isLoading = false;
+    }
 }
 
 /**

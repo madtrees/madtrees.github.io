@@ -9,6 +9,7 @@ Compress district GeoJSON files by:
 
 import json
 import os
+import hashlib
 from pathlib import Path
 
 # Property name mapping (long -> short)
@@ -105,6 +106,24 @@ def compress_geojson(input_path, output_path):
     
     return original_size, compressed_size
 
+def update_data_version(districts_dir, geojson_files):
+    """Update the index version after district contents change."""
+    version_hash = hashlib.sha256()
+    for path in sorted(geojson_files):
+        version_hash.update(path.name.encode('utf-8'))
+        version_hash.update(path.read_bytes())
+
+    index_path = districts_dir / 'districts_index.json'
+    if not index_path.exists():
+        return
+
+    with open(index_path, 'r', encoding='utf-8') as index_file:
+        index_data = json.load(index_file)
+    index_data['data_version'] = version_hash.hexdigest()[:16]
+    with open(index_path, 'w', encoding='utf-8') as index_file:
+        json.dump(index_data, index_file, ensure_ascii=False, indent=2)
+        index_file.write('\n')
+
 def main():
     script_dir = Path(__file__).parent
     districts_dir = script_dir / 'data' / 'districts'
@@ -131,6 +150,8 @@ def main():
         total_original += orig
         total_compressed += comp
         print()
+
+    update_data_version(districts_dir, geojson_files)
     
     # Summary
     total_reduction = (1 - total_compressed / total_original) * 100
